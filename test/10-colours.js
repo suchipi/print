@@ -1,11 +1,10 @@
 const print = require("../print");
 const { expect } = require("./helpers");
 const { readFileSync } = require("fs");
-const { dirname, join } = require("path");
+const { join } = require("path");
 const { fileURLToPath } = require("url");
 
-const dir = dirname(fileURLToPath(import.meta.url));
-const file = (x) => readFileSync(join(dir, ...x.split("/")), "utf8");
+const file = (x) => readFileSync(join(__dirname, ...x.split("/")), "utf8");
 
 describe("Coloured output", () => {
 	const off = "\x1B[0m";
