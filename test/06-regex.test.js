@@ -1,12 +1,12 @@
-const { expect } = require("./helpers");
+const print = require("../print");
 
 describe("Regular expressions", () => {
 	it("prints simple regex", () => {
-		expect(/a/).to.print("/a/");
-		expect(/b|c/).to.print("/b|c/");
-		expect(/\v/).to.print("/\\v/");
-		expect(/a/i).to.print("/a/i");
-		expect(/a/gim).to.print("/a/gim");
+		expect(print(/a/)).toMatchSnapshot();
+		expect(print(/b|c/)).toMatchSnapshot();
+		expect(print(/\v/)).toMatchSnapshot();
+		expect(print(/a/i)).toMatchSnapshot();
+		expect(print(/a/gim)).toMatchSnapshot();
 	});
 
 	it("prints hairy regex", async () => {
@@ -32,48 +32,25 @@ describe("Regular expressions", () => {
 			.replace(/^.+?\[\s*|\s*\]$/gs, "")
 			.split(/\r?\n/);
 		lines.forEach((line, index) =>
-			expect(regex[index]).to.print(line.replace(/^\s*|,$/g, ""))
+			expect(print(regex[index])).toMatchSnapshot()
 		);
 	});
 
 	it("displays named properties", () => {
 		const value = /abc|xyz/gi;
 		value.foo = "Foo";
-		expect(value).to.print(`RegExp {
-			/abc|xyz/gi
-			
-			foo: "Foo"
-		}`);
+		expect(print(value)).toMatchSnapshot();
 		value.bar = "Bar";
-		expect(value).to.print(`RegExp {
-			/abc|xyz/gi
-			
-			foo: "Foo"
-			bar: "Bar"
-		}`);
+		expect(print(value)).toMatchSnapshot();
 	});
 
 	it("identifies subclasses", () => {
 		class PCRE extends RegExp {}
 		const regex = new PCRE("ABC|XYZ", "gi");
-		expect(regex).to.print(`PCRE {
-			/ABC|XYZ/gi
-		}`);
+		expect(print(regex)).toMatchSnapshot();
 		regex.foo = "Foo";
-		expect(regex).to.print(`PCRE {
-			/ABC|XYZ/gi
-			
-			foo: "Foo"
-		}`);
+		expect(print(regex)).toMatchSnapshot();
 		regex.exec("ABC");
-		expect(regex).to.print(
-			`PCRE {
-			/ABC|XYZ/gi
-			
-			lastIndex: 3
-			foo: "Foo"
-		}`,
-			{ all: true }
-		);
+		expect(print(regex, { all: true })).toMatchSnapshot();
 	});
 });

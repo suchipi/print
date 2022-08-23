@@ -1,0 +1,658 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Property fields Accessors catches and prints any error that's thrown 1`] = `
+{
+	abc: "ABC"
+	foo: Error {
+		y: "tho"
+	}
+	xyz: "XYZ"
+}
+`;
+
+exports[`Property fields Accessors invokes non-enumerable getters only if \`all\` is enabled 1`] = `
+{
+	xyz: 1
+}
+`;
+
+exports[`Property fields Accessors invokes non-enumerable getters only if \`all\` is enabled 2`] = `
+{
+	abc: 1
+	xyz: 2
+}
+`;
+
+exports[`Property fields Accessors invokes them if \`followGetters\` is enabled 1`] = `
+{
+	foo: "Foo"
+	bar: 1
+	baz: "Baz"
+}
+`;
+
+exports[`Property fields Extensibility identifies frozen objects 1`] = `
+{
+	Frozen
+}
+`;
+
+exports[`Property fields Extensibility identifies frozen objects 2`] = `
+{
+	Frozen
+	
+	foo: 1
+}
+`;
+
+exports[`Property fields Extensibility identifies non-extensible objects 1`] = `
+{
+	Non-extensible
+	
+	foo: 1
+}
+`;
+
+exports[`Property fields Extensibility identifies sealed objects 1`] = `
+{
+	Sealed
+	
+	foo: 1
+}
+`;
+
+exports[`Property fields Ordering Default sorts names and symbols separately 1`] = `
+{
+	xyz: "XYZ"
+	abc: "ABC"
+	Symbol(foo): "Foo"
+	Symbol(bar): "Bar"
+}
+`;
+
+exports[`Property fields Ordering Default sorts names and symbols separately 2`] = `
+{
+	xyz: "XYZ"
+	abc: "ABC"
+	foo: "Foo"
+	Symbol(foo): "Foo"
+	Symbol(bar): "Bar"
+	Symbol(qux): "Qux"
+}
+`;
+
+exports[`Property fields Ordering Default sorts names and symbols separately 3`] = `
+{
+	abc: "ABC"
+	foo: "Foo"
+	xyz: "XYZ"
+	Symbol(foo): "Foo"
+	Symbol(bar): "Bar"
+	Symbol(qux): "Qux"
+}
+`;
+
+exports[`Property fields Ordering Default sorts names in creation order 1`] = `
+{
+	G: "gamma"
+	Z: "zeta"
+	B: "beta"
+	T: "tau"
+	A: "alpha"
+}
+`;
+
+exports[`Property fields Ordering Default sorts names in creation order 2`] = `
+{
+	foo: "Foo"
+	bar: "Bar"
+}
+`;
+
+exports[`Property fields Ordering Default sorts names in creation order 3`] = `
+{
+	bar: "Bar"
+	xyz: "XYZ"
+	abc: "ABC"
+	foo: "Foo"
+}
+`;
+
+exports[`Property fields Ordering Default sorts symbols in creation order 1`] = `
+{
+	Symbol(gamma): "G"
+	Symbol(zeta): "Z"
+	Symbol(beta): "B"
+	Symbol(tau): "T"
+	Symbol(alpha): "A"
+}
+`;
+
+exports[`Property fields Ordering Default sorts symbols in creation order 2`] = `
+{
+	Symbol(foo): "Foo"
+	Symbol(bar): "Bar"
+}
+`;
+
+exports[`Property fields Ordering Default sorts symbols in creation order 3`] = `
+{
+	Symbol(bar): "Bar"
+	Symbol(xyz): "XYZ"
+	Symbol(abc): "ABC"
+	Symbol(foo): "Foo"
+}
+`;
+
+exports[`Property fields Ordering When \`sort\` is enabled sorts case-insensitively 1`] = `
+{
+	a: 1
+	B: 2
+	c: 3
+	D: 0
+}
+`;
+
+exports[`Property fields Ordering When \`sort\` is enabled sorts case-insensitively 2`] = `
+{
+	Symbol(a): 1
+	Symbol(B): 2
+	Symbol(c): 3
+	Symbol(D): 0
+}
+`;
+
+exports[`Property fields Ordering When \`sort\` is enabled sorts names alphabetically 1`] = `
+{
+	__FB: "FooBar"
+	A: "alpha"
+	B: "beta"
+	D: "delta"
+	G: "gamma"
+	P: "pi"
+}
+`;
+
+exports[`Property fields Ordering When \`sort\` is enabled sorts names alphabetically 2`] = `
+{
+	__FB: "FooBar"
+	A: "alpha"
+	B: "beta"
+	D: "delta"
+	E: "epsilon"
+	G: "gamma"
+	P: "pi"
+	Z: "zeta"
+}
+`;
+
+exports[`Property fields Ordering When \`sort\` is enabled sorts symbols alphabetically 1`] = `
+{
+	Symbol(beta): "B"
+	Symbol(gamma): "G"
+	Symbol(tau): "T"
+}
+`;
+
+exports[`Property fields Ordering When \`sort\` is enabled sorts symbols alphabetically 2`] = `
+{
+	Symbol(alpha): "A"
+	Symbol(beta): "B"
+	Symbol(gamma): "G"
+	Symbol(tau): "T"
+	Symbol(zeta): "Z"
+}
+`;
+
+exports[`Property fields Ordering When \`sort\` is enabled sorts symbols and names together 1`] = `
+{
+	abc: "ABC"
+	Symbol(def): "DEF"
+	Symbol(uvw): "UVW"
+	xyz: "XYZ"
+}
+`;
+
+exports[`Property fields Prototypes identifies null prototypes 1`] = `
+{
+	Null prototype
+}
+`;
+
+exports[`Property fields Prototypes identifies null prototypes 2`] = `
+{
+	Null prototype
+	
+	foo: "Foo"
+}
+`;
+
+exports[`Property fields Prototypes identifies null prototypes 3`] = `
+{
+	Null prototype
+	
+	foo: "Foo"
+	bar: "Bar"
+}
+`;
+
+exports[`Property fields Prototypes identifies null prototypes 4`] = `
+{
+	Null prototype
+	Frozen
+	
+	foo: "Foo"
+	bar: "Bar"
+}
+`;
+
+exports[`Property fields Prototypes prints \`__proto__\` if \`opts.proto\` is enabled 1`] = `
+{
+	__proto__: {
+		Null prototype
+		
+		__proto__: null
+	}
+	foo: {
+		__proto__: -> {root}.__proto__
+		name: "Foo"
+	}
+	bar: {
+		__proto__: -> {root}.foo
+		name: "Bar"
+	}
+}
+`;
+
+exports[`Property fields Prototypes recovers gracefully if \`__proto__\` access throws 1`] = `
+{
+	__proto__: {
+		Null prototype
+		
+		__proto__: null
+	}
+	foo: {
+		__proto__: Error {
+			no: "Really"
+		}
+		name: "Foo"
+	}
+}
+`;
+
+exports[`Property fields Visibility hides non-enumerable properties 1`] = `
+{
+	c: "C"
+	a: "A"
+}
+`;
+
+exports[`Property fields Visibility hides non-enumerable properties 2`] = `
+{
+	a: "A"
+	c: "C"
+}
+`;
+
+exports[`Property fields Visibility never shows inherited properties 1`] = `Thing {}`;
+
+exports[`Property fields Visibility never shows inherited properties 2`] = `Thing {}`;
+
+exports[`Property fields Visibility never shows inherited properties 3`] = `
+Thing {
+	foo: "Foo"
+}
+`;
+
+exports[`Property fields Visibility never shows inherited properties 4`] = `
+Thing {
+	foo: "Foo"
+	bar: "Bar"
+}
+`;
+
+exports[`Property fields Visibility shows them if \`opts.all\` is enabled 1`] = `
+{
+	xyz: "XYZ"
+}
+`;
+
+exports[`Property fields Visibility shows them if \`opts.all\` is enabled 2`] = `
+{
+	abc: "ABC"
+	xyz: "XYZ"
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded doesn't needlessly invoke getters 1`] = `
+{
+	foo: {…}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded doesn't needlessly invoke getters 2`] = `
+{
+	foo: {
+		bar: 1
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded doesn't needlessly invoke getters 3`] = `
+{
+	foo: {
+		bar: 2
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 1`] = `{…}`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 2`] = `
+{
+	Frozen
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 3`] = `
+{
+	foo: {…}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 4`] = `
+{
+	foo: {
+		Frozen
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 5`] = `{…}`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 6`] = `
+{
+	Null prototype
+	Frozen
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 7`] = `
+{
+	foo: {…}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 8`] = `
+{
+	foo: {
+		Null prototype
+		Frozen
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 9`] = `
+{
+	Null prototype
+	
+	foo: {…}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about extensibility 10`] = `
+{
+	Null prototype
+	
+	foo: {
+		Frozen
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about null prototypes 1`] = `{…}`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about null prototypes 2`] = `
+{
+	Null prototype
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about null prototypes 3`] = `
+{
+	foo: {…}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides details about null prototypes 4`] = `
+{
+	foo: {
+		Null prototype
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides property lists 1`] = `{…}`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides property lists 2`] = `{…}`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides property lists 3`] = `
+{
+	foo: {…}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides property lists 4`] = `
+{
+	foo: {
+		bar: {…}
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides property lists 5`] = `
+{
+	foo: {
+		bar: {
+			baz: {…}
+		}
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides property lists 6`] = `
+{
+	foo: {
+		bar: {
+			baz: {
+				qux: {…}
+			}
+		}
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides property lists 7`] = `
+{
+	foo: {
+		bar: {
+			baz: {
+				qux: {
+					qul: 1
+				}
+			}
+		}
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides property lists 8`] = `
+{
+	foo: {
+		bar: {
+			baz: {
+				qux: {
+					qul: 1
+				}
+			}
+		}
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded elides property lists 9`] = `
+{
+	foo: {
+		bar: {
+			baz: {
+				qux: {
+					qul: 1
+				}
+			}
+		}
+	}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints primitive values 1`] = `"Foo"`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints primitive values 2`] = `3.525`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints primitive values 3`] = `false`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints primitive values 4`] = `Symbol(Foo)`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints primitive values 5`] = `
+{
+	foo: "Foo"
+	bar: 1
+	baz: false
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints primitive values 6`] = `
+{
+	Symbol(Foo): "Bar"
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints primitive values 7`] = `
+{
+	Symbol(Foo): {…}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints the object's class 1`] = `Thing {…}`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints the object's class 2`] = `
+Thing {
+	name: "Foo"
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints the object's class 3`] = `
+{
+	foo: Thing {…}
+}
+`;
+
+exports[`Property fields When \`maxDepth\` is exceeded still prints the object's class 4`] = `
+{
+	foo: Thing {
+		name: "Bar"
+	}
+}
+`;
+
+exports[`Property fields prints empty objects on one line 1`] = `{}`;
+
+exports[`Property fields prints empty objects on one line 2`] = `
+{
+	foo: {}
+}
+`;
+
+exports[`Property fields prints nested properties 1`] = `
+{
+	foo: {
+		bar: "baz"
+	}
+}
+`;
+
+exports[`Property fields prints nested properties 2`] = `
+{
+	foo: {
+		bar: {
+			baz: "qux"
+		}
+	}
+}
+`;
+
+exports[`Property fields prints string-valued properties 1`] = `
+{
+	foo: "bar"
+}
+`;
+
+exports[`Property fields prints string-valued properties 2`] = `
+{
+	123: "baz"
+}
+`;
+
+exports[`Property fields prints string-valued properties 3`] = `
+{
+	baz: 123.4
+}
+`;
+
+exports[`Property fields prints symbol-valued properties 1`] = `
+{
+	Symbol(foo): "bar"
+}
+`;
+
+exports[`Property fields prints symbol-valued properties 2`] = `
+{
+	@@toStringTag: "foo"
+}
+`;
+
+exports[`Property fields prints symbol-valued properties 3`] = `
+{
+	Symbol(Symbol.toStringTag): "foo"
+}
+`;
+
+exports[`Property fields prints symbol-valued properties 4`] = `
+{
+	@@iterator: @@iterator
+}
+`;
+
+exports[`Property fields prints symbol-valued properties 5`] = `
+{
+	Symbol(Symbol.iterator): Symbol(Symbol.iterator)
+}
+`;
+
+exports[`Property fields “Magic” numbers identifies Math.* constants 1`] = `
+{
+	euler: Math.E
+	obj: {
+		pi: Math.PI
+	}
+}
+`;
+
+exports[`Property fields “Magic” numbers identifies Number.* constants 1`] = `
+{
+	epsilon: Number.EPSILON
+	range: {
+		min: Number.MIN_VALUE
+		max: Number.MAX_VALUE
+	}
+}
+`;

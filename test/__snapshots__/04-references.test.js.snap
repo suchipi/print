@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Object references defaults to the label \`{root}\` 1`] = `
+{
+	bar: -> {root}
+}
+`;
+
+exports[`Object references indicates references using \`->\` 1`] = `
+input: {
+	self: -> input
+}
+`;
+
+exports[`Object references indicates references using \`->\` 2`] = `
+input: {
+	self: -> input
+	foo: {}
+	bar: []
+	baz: -> input.foo
+}
+`;
+
+exports[`Object references indicates references using \`->\` 3`] = `
+input: {
+	self: -> input
+	foo: {}
+	bar: [
+		-> input.foo
+		{}
+	]
+	baz: -> input.foo
+	qux: -> input.bar[1]
+}
+`;
+
+exports[`Object references indicates references using \`->\` 4`] = `
+input: {
+	self: -> input
+	foo: {}
+	bar: [
+		-> input.foo
+		{
+			obj: []
+		}
+	]
+	baz: -> input.foo
+	qux: -> input.bar[1].obj
+}
+`;
+
+exports[`Object references prints symbol-type labels 1`] = `
+Symbol(Foo): {
+	bar: "baz"
+}
+`;
+
+exports[`Object references prints symbol-type labels 2`] = `
+Symbol(Foo): {
+	bar: "baz"
+	Symbol(Foo): -> Symbol(Foo)
+}
+`;
+
+exports[`Object references prints symbol-type labels 3`] = `
+@@iterator: {
+	bar: "baz"
+	Symbol(Foo): -> @@iterator
+}
+`;
+
+exports[`Object references prints symbol-type labels 4`] = `
+input: {
+	bar: "baz"
+	Symbol(Foo): -> input
+	Symbol(Bar): [
+		{}
+	]
+	Symbol(Qux): -> input.Symbol(Bar)[0]
+}
+`;
+
+exports[`Object references prints symbol-type labels 5`] = `
+Symbol(Foo): {
+	bar: "baz"
+	Symbol(Foo): -> Symbol(Foo)
+	Symbol(Bar): [
+		{
+			qul: {
+				name: "Quul"
+			}
+		}
+	]
+	Symbol(Qux): -> Symbol(Foo).Symbol(Bar)[0].qul
+}
+`;
+
+exports[`Object references refers to input using a label 1`] = `
+foo: {
+	bar: "Baz"
+}
+`;

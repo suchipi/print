@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Primitives BigInts prints negative integers 1`] = `-42n`;
+
+exports[`Primitives BigInts prints positive integers 1`] = `42n`;
+
+exports[`Primitives Booleans prints false 1`] = `false`;
+
+exports[`Primitives Booleans prints true 1`] = `true`;
+
+exports[`Primitives Numbers identifies Math.* constants 1`] = `Math.E`;
+
+exports[`Primitives Numbers identifies Math.* constants 2`] = `Math.LN10`;
+
+exports[`Primitives Numbers identifies Math.* constants 3`] = `Math.LN2`;
+
+exports[`Primitives Numbers identifies Math.* constants 4`] = `Math.LOG10E`;
+
+exports[`Primitives Numbers identifies Math.* constants 5`] = `Math.LOG2E`;
+
+exports[`Primitives Numbers identifies Math.* constants 6`] = `Math.PI`;
+
+exports[`Primitives Numbers identifies Math.* constants 7`] = `Math.SQRT1_2`;
+
+exports[`Primitives Numbers identifies Math.* constants 8`] = `Math.SQRT2`;
+
+exports[`Primitives Numbers identifies Number.* constants 1`] = `Number.EPSILON`;
+
+exports[`Primitives Numbers identifies Number.* constants 2`] = `Number.MIN_VALUE`;
+
+exports[`Primitives Numbers identifies Number.* constants 3`] = `Number.MAX_VALUE`;
+
+exports[`Primitives Numbers identifies Number.* constants 4`] = `Number.MIN_SAFE_INTEGER`;
+
+exports[`Primitives Numbers identifies Number.* constants 5`] = `Number.MAX_SAFE_INTEGER`;
+
+exports[`Primitives Numbers prints NaN 1`] = `NaN`;
+
+exports[`Primitives Numbers prints negative floats 1`] = `-4.2`;
+
+exports[`Primitives Numbers prints negative infinity 1`] = `-Infinity`;
+
+exports[`Primitives Numbers prints negative integers 1`] = `-42`;
+
+exports[`Primitives Numbers prints negative zero 1`] = `-0`;
+
+exports[`Primitives Numbers prints positive floats 1`] = `4.2`;
+
+exports[`Primitives Numbers prints positive infinity 1`] = `Infinity`;
+
+exports[`Primitives Numbers prints positive integers 1`] = `42`;
+
+exports[`Primitives Numbers prints positive zero 1`] = `0`;
+
+exports[`Primitives Numbers shortens long numbers 1`] = `1e+64`;
+
+exports[`Primitives Strings escapes ASCII escapes 1`] = `"\\e"`;
+
+exports[`Primitives Strings escapes backslashes 1`] = `"\\\\"`;
+
+exports[`Primitives Strings escapes backspaces 1`] = `"\\b"`;
+
+exports[`Primitives Strings escapes bell characters 1`] = `"\\a"`;
+
+exports[`Primitives Strings escapes carriage-returns 1`] = `"\\r"`;
+
+exports[`Primitives Strings escapes form-feeds 1`] = `"\\f"`;
+
+exports[`Primitives Strings escapes line-feeds 1`] = `"\\n"`;
+
+exports[`Primitives Strings escapes null-bytes 1`] = `"\\0"`;
+
+exports[`Primitives Strings escapes other controls: 01 1`] = `"\\x01"`;
+
+exports[`Primitives Strings escapes other controls: 02 1`] = `"\\x02"`;
+
+exports[`Primitives Strings escapes other controls: 03 1`] = `"\\x03"`;
+
+exports[`Primitives Strings escapes other controls: 04 1`] = `"\\x04"`;
+
+exports[`Primitives Strings escapes other controls: 05 1`] = `"\\x05"`;
+
+exports[`Primitives Strings escapes other controls: 06 1`] = `"\\x06"`;
+
+exports[`Primitives Strings escapes other controls: 0E 1`] = `"\\x0E"`;
+
+exports[`Primitives Strings escapes other controls: 0F 1`] = `"\\x0F"`;
+
+exports[`Primitives Strings escapes other controls: 1A 1`] = `"\\x1A"`;
+
+exports[`Primitives Strings escapes other controls: 1C 1`] = `"\\x1C"`;
+
+exports[`Primitives Strings escapes other controls: 1D 1`] = `"\\x1D"`;
+
+exports[`Primitives Strings escapes other controls: 1E 1`] = `"\\x1E"`;
+
+exports[`Primitives Strings escapes other controls: 1F 1`] = `"\\x1F"`;
+
+exports[`Primitives Strings escapes other controls: 8A 1`] = `"\\x8A"`;
+
+exports[`Primitives Strings escapes other controls: 8B 1`] = `"\\x8B"`;
+
+exports[`Primitives Strings escapes other controls: 8C 1`] = `"\\x8C"`;
+
+exports[`Primitives Strings escapes other controls: 8D 1`] = `"\\x8D"`;
+
+exports[`Primitives Strings escapes other controls: 8E 1`] = `"\\x8E"`;
+
+exports[`Primitives Strings escapes other controls: 8F 1`] = `"\\x8F"`;
+
+exports[`Primitives Strings escapes other controls: 10 1`] = `"\\x10"`;
+
+exports[`Primitives Strings escapes other controls: 11 1`] = `"\\x11"`;
+
+exports[`Primitives Strings escapes other controls: 12 1`] = `"\\x12"`;
+
+exports[`Primitives Strings escapes other controls: 13 1`] = `"\\x13"`;
+
+exports[`Primitives Strings escapes other controls: 14 1`] = `"\\x14"`;
+
+exports[`Primitives Strings escapes other controls: 15 1`] = `"\\x15"`;
+
+exports[`Primitives Strings escapes other controls: 16 1`] = `"\\x16"`;
+
+exports[`Primitives Strings escapes other controls: 17 1`] = `"\\x17"`;
+
+exports[`Primitives Strings escapes other controls: 18 1`] = `"\\x18"`;
+
+exports[`Primitives Strings escapes other controls: 19 1`] = `"\\x19"`;
+
+exports[`Primitives Strings escapes other controls: 80 1`] = `"\\x80"`;
+
+exports[`Primitives Strings escapes other controls: 81 1`] = `"\\x81"`;
+
+exports[`Primitives Strings escapes other controls: 82 1`] = `"\\x82"`;
+
+exports[`Primitives Strings escapes other controls: 83 1`] = `"\\x83"`;
+
+exports[`Primitives Strings escapes other controls: 84 1`] = `"\\x84"`;
+
+exports[`Primitives Strings escapes other controls: 85 1`] = `"\\x85"`;
+
+exports[`Primitives Strings escapes other controls: 86 1`] = `"\\x86"`;
+
+exports[`Primitives Strings escapes other controls: 87 1`] = `"\\x87"`;
+
+exports[`Primitives Strings escapes other controls: 88 1`] = `"\\x88"`;
+
+exports[`Primitives Strings escapes other controls: 89 1`] = `"\\x89"`;
+
+exports[`Primitives Strings escapes tabs 1`] = `"\\t"`;
+
+exports[`Primitives Strings escapes vertical-tabs 1`] = `"\\v"`;
+
+exports[`Primitives Strings prints strings 1`] = `"Foo"`;
+
+exports[`Primitives Symbols doesn't confuse them with identically-named symbols 1`] = `Symbol(Symbol.iterator)`;
+
+exports[`Primitives Symbols doesn't confuse them with identically-named symbols 2`] = `Symbol(iterator)`;
+
+exports[`Primitives Symbols doesn't confuse them with identically-named symbols 3`] = `@@iterator`;
+
+exports[`Primitives Symbols doesn't identify them if \`opts.noAmp\` is enabled 1`] = `@@match`;
+
+exports[`Primitives Symbols doesn't identify them if \`opts.noAmp\` is enabled 2`] = `@@match`;
+
+exports[`Primitives Symbols doesn't identify them if \`opts.noAmp\` is enabled 3`] = `Symbol(Symbol.match)`;
+
+exports[`Primitives Symbols ensures value is always enclosed by \`Symbol(…)\` 1`] = `Symbol(Foo)`;
+
+exports[`Primitives Symbols identifies well-known symbols 1`] = `@@asyncIterator`;
+
+exports[`Primitives Symbols identifies well-known symbols 2`] = `@@hasInstance`;
+
+exports[`Primitives Symbols identifies well-known symbols 3`] = `@@isConcatSpreadable`;
+
+exports[`Primitives Symbols identifies well-known symbols 4`] = `@@iterator`;
+
+exports[`Primitives Symbols identifies well-known symbols 5`] = `@@match`;
+
+exports[`Primitives Symbols identifies well-known symbols 6`] = `@@replace`;
+
+exports[`Primitives Symbols identifies well-known symbols 7`] = `@@search`;
+
+exports[`Primitives Symbols identifies well-known symbols 8`] = `@@species`;
+
+exports[`Primitives Symbols identifies well-known symbols 9`] = `@@split`;
+
+exports[`Primitives Symbols identifies well-known symbols 10`] = `@@toPrimitive`;
+
+exports[`Primitives Symbols identifies well-known symbols 11`] = `@@toStringTag`;
+
+exports[`Primitives Symbols identifies well-known symbols 12`] = `@@unscopables`;
+
+exports[`Primitives Symbols prints symbol values 1`] = `Symbol(Foo)`;
+
+exports[`Primitives prints null 1`] = `null`;
+
+exports[`Primitives prints undefined 1`] = `undefined`;

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Regular expressions displays named properties 1`] = `
+RegExp {
+	/abc|xyz/gi
+	
+	foo: "Foo"
+}
+`;
+
+exports[`Regular expressions displays named properties 2`] = `
+RegExp {
+	/abc|xyz/gi
+	
+	foo: "Foo"
+	bar: "Bar"
+}
+`;
+
+exports[`Regular expressions identifies subclasses 1`] = `
+PCRE {
+	/ABC|XYZ/gi
+}
+`;
+
+exports[`Regular expressions identifies subclasses 2`] = `
+PCRE {
+	/ABC|XYZ/gi
+	
+	foo: "Foo"
+}
+`;
+
+exports[`Regular expressions identifies subclasses 3`] = `
+PCRE {
+	/ABC|XYZ/gi
+	
+	lastIndex: 3
+	foo: "Foo"
+}
+`;
+
+exports[`Regular expressions prints hairy regex 1`] = `/^[a-zA-Z0-9.!#$%&'*+/=?^_\`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/`;
+
+exports[`Regular expressions prints simple regex 1`] = `/a/`;
+
+exports[`Regular expressions prints simple regex 2`] = `/b|c/`;
+
+exports[`Regular expressions prints simple regex 3`] = `/\\v/`;
+
+exports[`Regular expressions prints simple regex 4`] = `/a/i`;
+
+exports[`Regular expressions prints simple regex 5`] = `/a/gim`;

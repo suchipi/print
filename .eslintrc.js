@@ -6,7 +6,6 @@ module.exports = {
 	},
 	env: {
 		browser: false,
-		mocha: false,
 		node: false,
 		es2020: true,
 	},
@@ -16,16 +15,12 @@ module.exports = {
 		exports: "readonly",
 		console: "readonly",
 	},
-	rules: {
-		curly: ["warn", "all"],
-		yoda: ["warn", "never"],
-	},
 	ignorePatterns: [".eslintrc.js"],
 	overrides: [
 		{
 			files: ["test/**/*"],
 			env: {
-				mocha: true,
+				jest: true,
 			},
 			globals: {
 				__filename: "readonly",

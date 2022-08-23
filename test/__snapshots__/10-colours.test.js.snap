@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Coloured output colours nullish values 1`] = `[38;5;8mnull[0m`;
+
+exports[`Coloured output colours nullish values 2`] = `[38;5;8mundefined[0m`;
+
+exports[`Coloured output colours nullish values 3`] = `[37mnull[0m`;
+
+exports[`Coloured output colours nullish values 4`] = `[37mundefined[0m`;
+
+exports[`Coloured output colours primitives 1`] = `[35mtrue[0m`;
+
+exports[`Coloured output colours primitives 2`] = `[35mfalse[0m`;
+
+exports[`Coloured output colours primitives 3`] = `[35m10.25[0m`;
+
+exports[`Coloured output colours primitives 4`] = `[35m3000n[0m`;
+
+exports[`Coloured output colours primitives 5`] = `[35mInfinity[0m`;
+
+exports[`Coloured output colours primitives 6`] = `[35m-Infinity[0m`;
+
+exports[`Coloured output colours property keys 1`] = `[39mWorld's loneliest number[0m[38;5;237m:[0m [35m-0[0m`;
+
+exports[`Coloured output colours property keys 2`] = `[39mWorld's loneliest number[0m[38;5;237m:[0m [35m-0[0m`;
+
+exports[`Coloured output colours property keys 3`] = `[39mWorld's loneliest number[0m[38;5;237m:[0m [35m-0[0m`;
+
+exports[`Coloured output colours property keys 4`] = `[39mWorld's loneliest number[0m[37m:[0m [35m-0[0m`;
+
+exports[`Coloured output colours strings 1`] = `[38;5;22m"[38;5;10mFoo Bar [38;5;28m\\n[38;5;10m Baz [38;5;28m\\t[38;5;10m [38;5;28m\\v[38;5;10m Qux[38;5;22m"[0m`;
+
+exports[`Coloured output colours strings 2`] = `[38;5;22m"[38;5;10mFoo Bar [38;5;28m\\n[38;5;10m Baz [38;5;28m\\t[38;5;10m [38;5;28m\\v[38;5;10m Qux[38;5;22m"[0m`;
+
+exports[`Coloured output colours strings 3`] = `[38;5;22m"[38;5;10mFoo Bar [38;5;28m\\n[38;5;10m Baz [38;5;28m\\t[38;5;10m [38;5;28m\\v[38;5;10m Qux[38;5;22m"[0m`;
+
+exports[`Coloured output colours strings 4`] = `[32m"[32mFoo Bar [32m\\n[32m Baz [32m\\t[32m [32m\\v[32m Qux[32m"[0m`;

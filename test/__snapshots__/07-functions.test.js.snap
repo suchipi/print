@@ -1,0 +1,352 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Functions Accessors always prints write-only accessors 1`] = `
+{
+	foo: "Foo"
+	set name: Function {
+		│1│ set name(to) {
+		│2│           obj.foo = to;
+		│3│         }
+	}
+	bar: "Bar"
+}
+`;
+
+exports[`Functions Accessors doesn't print them when invoking getters 1`] = `
+{
+	abc: "ABC"
+	foo: 1
+	xyz: "XYZ"
+}
+`;
+
+exports[`Functions Accessors identifies references 1`] = `
+{
+	a: 1
+	b: 2
+	get foo: Function {
+		│1│ function bar(a, b) {
+		│2│         return a + b;
+		│3│       }
+	}
+	set foo: -> {root}.get foo
+}
+`;
+
+exports[`Functions Accessors identifies references 2`] = `
+{
+	a: 1
+	b: 2
+	get foo: Function {
+		baz: "Qux"
+		
+		│1│ function bar(a, b) {
+		│2│         return a + b;
+		│3│       }
+	}
+	set foo: -> {root}.get foo
+	c: 3
+}
+`;
+
+exports[`Functions Accessors prints getter/setter pairs 1`] = `
+{
+	abc: "ABC"
+	get foo: Function {
+		│1│ get foo() {
+		│2│           return "Foo";
+		│3│         }
+	}
+	set foo: Function {
+		│1│ set foo(to) {
+		│2│           calls += 1 ** +!!to;
+		│3│         }
+	}
+	xyz: "XYZ"
+}
+`;
+
+exports[`Functions Accessors prints getter/setter pairs 2`] = `
+{
+	abc: "ABC"
+	xyz: "XYZ"
+	get @@toStringTag: Function {
+		│1│ get [Symbol.toStringTag]() {
+		│2│           ++calls;
+		│3│           return "Bar";
+		│4│         }
+	}
+	set @@toStringTag: Function {
+		│1│ set [Symbol.toStringTag](to) {
+		│2│           calls += 1 ** +!!to;
+		│3│         }
+	}
+}
+`;
+
+exports[`Functions Line terminators prints source code that uses CR endings 1`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions Line terminators prints source code that uses CRLF endings 1`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions Line terminators prints source code that uses LF endings 1`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions Line terminators prints source code that uses LS endings 1`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions Line terminators prints source code that uses PS endings 1`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions Line terminators prints source code with mixed endings 1`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions Line terminators prints source code with mixed endings 2`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions Line terminators prints source code with mixed endings 3`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions Line terminators prints source code with mixed endings 4`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions Line terminators prints source code with mixed endings 5`] = `
+Function {
+	│1│ function foo(c){
+	│2│ 	let a = 1;
+	│3│ 	let b = 2;
+	│4│ 	if(a + b < c)
+	│5│ 		return a + b;
+	│6│ }
+}
+`;
+
+exports[`Functions doesn't print source code if \`noSource\` is set 1`] = `Function {}`;
+
+exports[`Functions doesn't print source code if \`noSource\` is set 2`] = `GeneratorFunction {}`;
+
+exports[`Functions doesn't print source code if \`noSource\` is set 3`] = `AsyncFunction {}`;
+
+exports[`Functions doesn't print source code if \`noSource\` is set 4`] = `AsyncGeneratorFunction {}`;
+
+exports[`Functions doesn't print source code if \`noSource\` is set 5`] = `
+Function {
+	length: 1
+	name: "foo"
+	arguments: null
+	caller: null
+	prototype: {
+		constructor: -> {root}
+	}
+}
+`;
+
+exports[`Functions doesn't print source code if \`noSource\` is set 6`] = `
+GeneratorFunction {
+	length: 0
+	name: "bar"
+	prototype: {}
+}
+`;
+
+exports[`Functions doesn't print source code if \`noSource\` is set 7`] = `
+AsyncFunction {
+	length: 1
+	name: "baz"
+}
+`;
+
+exports[`Functions doesn't print source code if \`noSource\` is set 8`] = `
+AsyncGeneratorFunction {
+	length: 0
+	name: "qux"
+	prototype: {}
+}
+`;
+
+exports[`Functions identifies asynchronous functions 1`] = `
+AsyncFunction {
+	│1│ async function foo() {
+	│2│       return 20;
+	│3│     }
+}
+`;
+
+exports[`Functions identifies asynchronous functions 2`] = `
+{
+	method: AsyncFunction {
+		│1│ async function foo() {
+		│2│       return 20;
+		│3│     }
+	}
+}
+`;
+
+exports[`Functions identifies asynchronous generators 1`] = `
+AsyncGeneratorFunction {
+	│1│ async function* foo() {
+	│2│       yield 20;
+	│3│     }
+}
+`;
+
+exports[`Functions identifies asynchronous generators 2`] = `
+{
+	method: AsyncGeneratorFunction {
+		│1│ async function* foo() {
+		│2│       yield 20;
+		│3│     }
+	}
+}
+`;
+
+exports[`Functions identifies generator functions 1`] = `
+GeneratorFunction {
+	│1│ function* foo() {
+	│2│       yield 20;
+	│3│     }
+}
+`;
+
+exports[`Functions identifies generator functions 2`] = `
+{
+	method: GeneratorFunction {
+		│1│ function* foo() {
+		│2│       yield 20;
+		│3│     }
+	}
+}
+`;
+
+exports[`Functions prints properties 1`] = `
+Function {
+	length: 2
+	name: "foo"
+	arguments: null
+	caller: null
+	prototype: {
+		constructor: -> {root}
+	}
+	
+	│1│ function foo(a, b) {
+	│2│       return a + b;
+	│3│     }
+}
+`;
+
+exports[`Functions prints properties 2`] = `
+Function {
+	length: 2
+	name: "foo"
+	arguments: null
+	caller: null
+	prototype: {
+		constructor: -> {root}
+	}
+	bar: "Bar"
+	
+	│1│ function foo(a, b) {
+	│2│       return a + b;
+	│3│     }
+}
+`;
+
+exports[`Functions prints source code 1`] = `
+Function {
+	│1│ function func(i) {
+	│2│       return i + 2;
+	│3│     }
+}
+`;
+
+exports[`Functions prints source code 2`] = `
+Function {
+	│1│ () => "A"
+}
+`;
+
+exports[`Functions prints source code 3`] = `
+{
+	func: Function {
+		│1│ function fn(value) {
+		│2│         return value;
+		│3│       }
+	}
+	arrow: Function {
+		│1│ (a, b) => a + b
+	}
+}
+`;
