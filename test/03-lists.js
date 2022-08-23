@@ -298,7 +298,7 @@ describe("Lists", () => {
 			]`);
 		});
 
-		when("`maxDepth` is exceeded", () => {
+		describe("When `maxDepth` is exceeded", () => {
 			it("elides entries", () => {
 				expect([1, 2, 3]).to.print("[…]", { maxDepth: 0 });
 				expect([1, 2, 3]).to.print(

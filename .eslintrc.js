@@ -28,7 +28,8 @@ module.exports = {
 				mocha: true,
 			},
 			globals: {
-				when: "readonly",
+				__filename: "readonly",
+				__dirname: "readonly",
 			},
 		},
 	],

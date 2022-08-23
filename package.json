@@ -38,13 +38,7 @@
 		"eslint-config-unobtrusive": "^1.2.5",
 		"eslint-plugin-import": "^2.26.0",
 		"mocha": "^7.2.0",
-		"mocha-when": "^1.0.1",
 		"prettier": "^2.7.1"
-	},
-	"mocha": {
-		"require": [
-			"mocha-when/register"
-		]
 	},
 	"prettier": {}
 }

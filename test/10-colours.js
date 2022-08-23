@@ -2,7 +2,6 @@ const print = require("../print");
 const { expect } = require("./helpers");
 const { readFileSync } = require("fs");
 const { join } = require("path");
-const { fileURLToPath } = require("url");
 
 const file = (x) => readFileSync(join(__dirname, ...x.split("/")), "utf8");
 

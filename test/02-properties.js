@@ -344,7 +344,7 @@ describe("Property fields", () => {
 			});
 		});
 
-		when("`sort` is enabled", () => {
+		describe("When `sort` is enabled", () => {
 			it("sorts names alphabetically", () => {
 				const obj = {
 					G: "gamma",
@@ -624,7 +624,7 @@ describe("Property fields", () => {
 		});
 	});
 
-	when("`maxDepth` is exceeded", () => {
+	describe("When `maxDepth` is exceeded", () => {
 		it("elides property lists", () => {
 			const obj = { foo: { bar: { baz: { qux: { qul: 1 } } } } };
 			expect(obj).to.print("{…}", { maxDepth: 0 });
