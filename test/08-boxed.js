@@ -1,4 +1,4 @@
-import { expect } from "./helpers";
+const { expect } = require("./helpers");
 
 describe("Boxed primitives", () => {
 	describe("Booleans", () => {

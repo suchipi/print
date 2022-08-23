@@ -1,6 +1,6 @@
-import print from "../print";
+const print = require("../print");
 
-export function expect(actual) {
+function expect(actual) {
 	return {
 		get to() {
 			return this;
@@ -8,10 +8,10 @@ export function expect(actual) {
 		get be() {
 			return this;
 		},
-		get true() {
+		true() {
 			return this.equal(true, "Expected value to be true");
 		},
-		get false() {
+		false() {
 			return this.equal(false, "Expected value to be false");
 		},
 		equal(expected, msg = "Expected values to be equal") {
@@ -88,3 +88,5 @@ function deindent(...args) {
 	const stripPattern = [...depthStrings].reverse().join("|");
 	return chunk.replace(new RegExp(`^(?:${stripPattern})`, "gm"), "");
 }
+
+module.exports = { expect };

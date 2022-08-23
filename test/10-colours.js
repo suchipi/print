@@ -1,8 +1,8 @@
-import print from "../print";
-import { expect } from "./helpers";
-import { readFileSync } from "fs";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+const print = require("../print");
+const { expect } = require("./helpers");
+const { readFileSync } = require("fs");
+const { dirname, join } = require("path");
+const { fileURLToPath } = require("url");
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const file = (x) => readFileSync(join(dir, ...x.split("/")), "utf8");

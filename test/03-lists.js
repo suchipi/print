@@ -1,5 +1,5 @@
-import { expect } from "./helpers";
-import print from "../print";
+const { expect } = require("./helpers");
+const print = require("../print");
 
 describe("Lists", () => {
 	describe("Arrays", () => {

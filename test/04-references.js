@@ -1,4 +1,4 @@
-import { expect } from "./helpers";
+const { expect } = require("./helpers");
 
 describe("Object references", () => {
 	it("refers to input using a label", () => {

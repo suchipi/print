@@ -10,6 +10,12 @@ module.exports = {
 		node: false,
 		es2020: true,
 	},
+	globals: {
+		require: "readonly",
+		module: "readonly",
+		exports: "readonly",
+		console: "readonly",
+	},
 	rules: {
 		curly: ["warn", "all"],
 		yoda: ["warn", "never"],

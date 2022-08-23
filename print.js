@@ -21,7 +21,7 @@
  * @param  {Number}  [flags=0]            - Bitmask of flags used internally
  * @return {String}
  */
-export default function print(value, ...args) {
+function print(value, ...args) {
 	// Resolve arguments
 	if (args.length === 1 && args[0] && typeof args[0] === "object") {
 		args.unshift(null);
@@ -585,3 +585,5 @@ export default function print(value, ...args) {
 
 	return key + (type ? typeColour + type + off + " " : "") + value.join("");
 }
+
+module.exports = print;

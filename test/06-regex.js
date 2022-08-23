@@ -1,4 +1,4 @@
-import { expect } from "./helpers";
+const { expect } = require("./helpers");
 
 describe("Regular expressions", () => {
 	it("prints simple regex", () => {
