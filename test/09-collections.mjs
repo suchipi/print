@@ -1,8 +1,8 @@
-import {expect} from "./helpers.mjs";
+import { expect } from "./helpers.mjs";
 
 describe("Collections", () => {
 	const A = {
-		colour: 0x00FF00,
+		colour: 0x00ff00,
 		width: 28.52,
 		height: 10.2,
 		range: [-20, 12],
@@ -14,15 +14,17 @@ describe("Collections", () => {
 		country: "Australia",
 		city: "Melbourne",
 	};
-	
+
 	describe("Maps", () => {
 		it("prints string-type entries", () => {
-			expect(new Map([
-				["alpha", "A"],
-				["beta",  "B"],
-				["gamma", "G"],
-				["delta", "D"],
-			])).to.print(`Map {
+			expect(
+				new Map([
+					["alpha", "A"],
+					["beta", "B"],
+					["gamma", "G"],
+					["delta", "D"],
+				])
+			).to.print(`Map {
 				0.key => "alpha"
 				0.value => "A"
 				
@@ -36,7 +38,7 @@ describe("Collections", () => {
 				3.value => "D"
 			}`);
 		});
-		
+
 		it("prints symbol-type entries", () => {
 			const a = Symbol("Alpha");
 			expect(new Map([["A", a]])).to.print(`Map {
@@ -64,14 +66,16 @@ describe("Collections", () => {
 				0.value => @@iterator
 			}`);
 		});
-		
+
 		it("prints object-type keys", () => {
-			expect(new Map([
-				[{a: "a", A: "A"}, "alpha"],
-				[{b: "b", B: "B"}, "beta"],
-				[{g: "g", G: "G"}, "gamma"],
-				[{d: "d", D: "D"}, "delta"],
-			])).to.print(`Map {
+			expect(
+				new Map([
+					[{ a: "a", A: "A" }, "alpha"],
+					[{ b: "b", B: "B" }, "beta"],
+					[{ g: "g", G: "G" }, "gamma"],
+					[{ d: "d", D: "D" }, "delta"],
+				])
+			).to.print(`Map {
 				0.key => {
 					a: "a"
 					A: "A"
@@ -96,10 +100,12 @@ describe("Collections", () => {
 				}
 				3.value => "delta"
 			}`);
-			expect(new Map([
-				[A, "A"],
-				[B, "B"],
-			])).to.print(`Map {
+			expect(
+				new Map([
+					[A, "A"],
+					[B, "B"],
+				])
+			).to.print(`Map {
 				0.key => {
 					colour: 65280
 					width: 28.52
@@ -120,7 +126,7 @@ describe("Collections", () => {
 				}
 				1.value => "B"
 			}`);
-			expect(new Map([ [{A, B}, "AB"] ])).to.print(`Map {
+			expect(new Map([[{ A, B }, "AB"]])).to.print(`Map {
 				0.key => {
 					A: {
 						colour: 65280
@@ -142,14 +148,16 @@ describe("Collections", () => {
 				0.value => "AB"
 			}`);
 		});
-		
+
 		it("prints object-type values", () => {
-			expect(new Map([
-				["alpha", {a: "a", A: "A"}],
-				["beta",  {b: "b", B: "B"}],
-				["gamma", {g: "g", G: "G"}],
-				["delta", {d: "d", D: "D"}],
-			])).to.print(`Map {
+			expect(
+				new Map([
+					["alpha", { a: "a", A: "A" }],
+					["beta", { b: "b", B: "B" }],
+					["gamma", { g: "g", G: "G" }],
+					["delta", { d: "d", D: "D" }],
+				])
+			).to.print(`Map {
 				0.key => "alpha"
 				0.value => {
 					a: "a"
@@ -174,12 +182,17 @@ describe("Collections", () => {
 					D: "D"
 				}
 			}`);
-			expect(new Map([
-				["alphabeta", {
-					alpha: {a: "a", A: "A"},
-					beta:  {b: "b", B: "B"},
-				}],
-			])).to.print(`Map {
+			expect(
+				new Map([
+					[
+						"alphabeta",
+						{
+							alpha: { a: "a", A: "A" },
+							beta: { b: "b", B: "B" },
+						},
+					],
+				])
+			).to.print(`Map {
 				0.key => "alphabeta"
 				0.value => {
 					alpha: {
@@ -193,7 +206,7 @@ describe("Collections", () => {
 				}
 			}`);
 		});
-		
+
 		it("prints properties", () => {
 			const map = new Map([
 				["A", "a"],
@@ -222,12 +235,13 @@ describe("Collections", () => {
 				}
 			}`);
 		});
-		
+
 		it("indicates references using `->`", () => {
 			const list = [1];
 			const mappedKey = new Map([[list, "list"]]);
 			const mappedValue = new Map([["list", list]]);
-			expect([list, mappedKey]).to.print(`input: [
+			expect([list, mappedKey]).to.print(
+				`input: [
 				[
 					1
 				]
@@ -235,8 +249,11 @@ describe("Collections", () => {
 					0.key -> input[0]
 					0.value => "list"
 				}
-			]`, "input");
-			expect([list, mappedValue]).to.print(`input: [
+			]`,
+				"input"
+			);
+			expect([list, mappedValue]).to.print(
+				`input: [
 				[
 					1
 				]
@@ -244,7 +261,9 @@ describe("Collections", () => {
 					0.key => "list"
 					0.value -> input[0]
 				}
-			]`, "input");
+			]`,
+				"input"
+			);
 			list.pop();
 			expect([list, mappedKey, mappedValue]).to.print(`[
 				[]
@@ -258,7 +277,7 @@ describe("Collections", () => {
 				}
 			]`);
 		});
-		
+
 		it("prints empty maps on one line", () => {
 			const map = new Map();
 			expect(map).to.print("Map {}");
@@ -267,19 +286,19 @@ describe("Collections", () => {
 				foo: "Bar"
 			}`);
 		});
-		
+
 		it("catches errors thrown by faulty iterators", () => {
-			class BadMap extends Map{
-				[Symbol.iterator](){
+			class BadMap extends Map {
+				[Symbol.iterator]() {
 					let count = 0;
 					return {
-						next(){
-							if(++count >= 3){
+						next() {
+							if (++count >= 3) {
 								const error = new RangeError("You're out");
 								error.strikes = 3;
 								throw error;
 							}
-							return {value: [count, count]};
+							return { value: [count, count] };
 						},
 					};
 				}
@@ -297,17 +316,17 @@ describe("Collections", () => {
 			}`);
 		});
 	});
-	
+
 	describe("Sets", () => {
 		it("prints basic entries", () => {
-			const set = new Set(["A", "B", 0xCC]);
+			const set = new Set(["A", "B", 0xcc]);
 			expect(set).to.print(`Set {
 				0 => "A"
 				1 => "B"
 				2 => 204
 			}`);
 		});
-		
+
 		it("prints symbol-type entries", () => {
 			const set = new Set([Symbol.iterator, Symbol("Foo")]);
 			expect(set).to.print(`Set {
@@ -315,7 +334,7 @@ describe("Collections", () => {
 				1 => Symbol(Foo)
 			}`);
 		});
-		
+
 		it("prints object-type entries", () => {
 			const set = new Set(["0", A, B, "C"]);
 			expect(set).to.print(`Set {
@@ -339,7 +358,7 @@ describe("Collections", () => {
 				3 => "C"
 			}`);
 		});
-		
+
 		it("prints nested sets", () => {
 			const nest = new Set([1, A, "3", new Set([2, B, "4"])]);
 			expect(nest).to.print(`Set {
@@ -367,7 +386,7 @@ describe("Collections", () => {
 				}
 			}`);
 		});
-		
+
 		it("prints properties", () => {
 			const input = new Set(["A", "B", "C"]);
 			input.name = "Quxabaz";
@@ -387,10 +406,10 @@ describe("Collections", () => {
 				}
 			}`);
 		});
-		
+
 		it("indicates references using `->`", () => {
-			const bar = {name: "Bar"};
-			const input = {foo: "Foo", bar, baz: new Set([bar])};
+			const bar = { name: "Bar" };
+			const input = { foo: "Foo", bar, baz: new Set([bar]) };
 			expect(input).to.print(`{
 				foo: "Foo"
 				bar: {
@@ -401,15 +420,16 @@ describe("Collections", () => {
 				}
 			}`);
 		});
-		
+
 		it("disambiguates entries and numeric properties", () => {
-			const a   = {b: "c"};
+			const a = { b: "c" };
 			const set = new Set([a]);
-			set.foo   = {bar: "Baz"};
+			set.foo = { bar: "Baz" };
 			set.add(set.foo);
-			set[1]    = {nah: "Nope"};
-			set.bar   = set[1];
-			expect({set}).to.print(`input: {
+			set[1] = { nah: "Nope" };
+			set.bar = set[1];
+			expect({ set }).to.print(
+				`input: {
 				set: Set {
 					0 => {
 						b: "c"
@@ -424,9 +444,11 @@ describe("Collections", () => {
 					foo: -> input.set[1]
 					bar: -> input.set.1
 				}
-			}`, "input");
+			}`,
+				"input"
+			);
 		});
-		
+
 		it("prints empty sets on one line", () => {
 			const set = new Set();
 			expect(set).to.print("Set {}");
@@ -435,19 +457,19 @@ describe("Collections", () => {
 				foo: "Bar"
 			}`);
 		});
-		
+
 		it("catches errors thrown by faulty iterators", () => {
-			class BadSet extends Set{
-				[Symbol.iterator](){
+			class BadSet extends Set {
+				[Symbol.iterator]() {
 					let count = 0;
 					return {
-						next(){
-							if(++count >= 3){
+						next() {
+							if (++count >= 3) {
 								const error = new RangeError("You're out");
 								error.strikes = 3;
 								throw error;
 							}
-							return {value: count};
+							return { value: count };
 						},
 					};
 				}
@@ -461,7 +483,7 @@ describe("Collections", () => {
 			}`);
 		});
 	});
-	
+
 	describe("WeakMaps", () => {
 		it("prints properties", () => {
 			const input = new WeakMap();
@@ -475,12 +497,12 @@ describe("Collections", () => {
 				b: "XYZ"
 			}`);
 		});
-		
+
 		it("prints empty maps on one line", () => {
 			expect(new WeakMap()).to.print("WeakMap {}");
 		});
 	});
-	
+
 	describe("WeakSets", () => {
 		it("prints properties", () => {
 			const input = new WeakSet();
@@ -494,7 +516,7 @@ describe("Collections", () => {
 				b: "XYZ"
 			}`);
 		});
-		
+
 		it("prints empty sets on one line", () => {
 			expect(new WeakSet()).to.print("WeakSet {}");
 		});

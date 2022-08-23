@@ -1,14 +1,14 @@
-import {expect} from "./helpers.mjs";
+import { expect } from "./helpers.mjs";
 
 describe("Regular expressions", () => {
 	it("prints simple regex", () => {
-		expect(/a/)   .to.print("/a/");
-		expect(/b|c/) .to.print("/b|c/");
-		expect(/\v/)  .to.print("/\\v/");
-		expect(/a/i)  .to.print("/a/i");
-		expect(/a/gmi).to.print("/a/gim");
+		expect(/a/).to.print("/a/");
+		expect(/b|c/).to.print("/b|c/");
+		expect(/\v/).to.print("/\\v/");
+		expect(/a/i).to.print("/a/i");
+		expect(/a/gim).to.print("/a/gim");
 	});
-	
+
 	it("prints hairy regex", async () => {
 		const fn = () => [
 			/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
@@ -27,10 +27,15 @@ describe("Regular expressions", () => {
 			/\b(\d*1[1-3]th|\d*0th|(?:(?!11st)\d)*1st|\d*2nd|(?:(?!13rd)\d*)3rd|\d*[4-9]th)\b/,
 		];
 		const regex = fn();
-		const lines = fn.toString().replace(/^.+?\[\s*|\s*\]$/gs, "").split(/\r?\n/);
-		lines.forEach((line, index) => expect(regex[index]).to.print(line.replace(/^\s*|,$/g, "")));
+		const lines = fn
+			.toString()
+			.replace(/^.+?\[\s*|\s*\]$/gs, "")
+			.split(/\r?\n/);
+		lines.forEach((line, index) =>
+			expect(regex[index]).to.print(line.replace(/^\s*|,$/g, ""))
+		);
 	});
-	
+
 	it("displays named properties", () => {
 		const value = /abc|xyz/gi;
 		value.foo = "Foo";
@@ -47,9 +52,9 @@ describe("Regular expressions", () => {
 			bar: "Bar"
 		}`);
 	});
-	
+
 	it("identifies subclasses", () => {
-		class PCRE extends RegExp{}
+		class PCRE extends RegExp {}
 		const regex = new PCRE("ABC|XYZ", "gi");
 		expect(regex).to.print(`PCRE {
 			/ABC|XYZ/gi
@@ -61,11 +66,14 @@ describe("Regular expressions", () => {
 			foo: "Foo"
 		}`);
 		regex.exec("ABC");
-		expect(regex).to.print(`PCRE {
+		expect(regex).to.print(
+			`PCRE {
 			/ABC|XYZ/gi
 			
 			lastIndex: 3
 			foo: "Foo"
-		}`, {all: true});
+		}`,
+			{ all: true }
+		);
 	});
 });

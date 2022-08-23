@@ -1,9 +1,16 @@
 {
-	"name": "print",
+	"name": "@suchipi/print",
 	"version": "v1.2.0",
 	"description": "Generate a human-readable representation of a value.",
 	"author": "John Gardner <gardnerjohng@gmail.com>",
-	"keywords": ["stringify", "trace", "debug", "outline", "format", "string"],
+	"keywords": [
+		"stringify",
+		"trace",
+		"debug",
+		"outline",
+		"format",
+		"string"
+	],
 	"repository": "https://github.com/Alhadis/Print",
 	"license": "ISC",
 	"engines": {
@@ -13,7 +20,9 @@
 	},
 	"main": "print.mjs",
 	"type": "module",
-	"files": ["print.mjs"],
+	"files": [
+		"print.mjs"
+	],
 	"scripts": {
 		"lint": "make lint",
 		"test": "make test"
@@ -23,10 +32,13 @@
 		"c8": "^7.1.2",
 		"eslint": "^7.1.0",
 		"mocha": "^7.2.0",
-		"mocha-when": "^1.0.1"
+		"mocha-when": "^1.0.1",
+		"prettier": "^2.7.1"
 	},
 	"mocha": {
-		"require": ["mocha-when/register"]
+		"require": [
+			"mocha-when/register"
+		]
 	},
 	"eslintConfig": {
 		"extends": "@alhadis",
@@ -35,13 +47,27 @@
 			"mocha": false,
 			"node": false
 		},
-		"overrides": [{
-			"files":   ["test/*.mjs"],
-			"env":     {"mocha": true},
-			"globals": {"when": "readonly"}
-		},{
-			"files": ["test/*-lists.mjs"],
-			"rules": {"prefer-rest-params": 0}
-		}]
-	}
+		"overrides": [
+			{
+				"files": [
+					"test/*.mjs"
+				],
+				"env": {
+					"mocha": true
+				},
+				"globals": {
+					"when": "readonly"
+				}
+			},
+			{
+				"files": [
+					"test/*-lists.mjs"
+				],
+				"rules": {
+					"prefer-rest-params": 0
+				}
+			}
+		]
+	},
+	"prettier": {}
 }

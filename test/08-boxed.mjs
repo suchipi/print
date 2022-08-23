@@ -1,4 +1,4 @@
-import {expect} from "./helpers.mjs";
+import { expect } from "./helpers.mjs";
 
 describe("Boxed primitives", () => {
 	describe("Booleans", () => {
@@ -13,7 +13,7 @@ describe("Boxed primitives", () => {
 				false
 			}`);
 		});
-		
+
 		it("prints properties", () => {
 			let value = new Boolean("Yes");
 			expect(value).to.print(`Boolean {
@@ -25,7 +25,7 @@ describe("Boxed primitives", () => {
 				
 				foo: "Foo"
 			}`);
-			
+
 			value = new Boolean(false);
 			expect(value).to.print(`Boolean {
 				false
@@ -37,9 +37,9 @@ describe("Boxed primitives", () => {
 				bar: "Bar"
 			}`);
 		});
-		
+
 		it("identifies subclasses", () => {
-			class ExtendedBoolean extends Boolean{}
+			class ExtendedBoolean extends Boolean {}
 			const value = new ExtendedBoolean("Yes");
 			expect(value).to.print(`ExtendedBoolean {
 				true
@@ -51,12 +51,20 @@ describe("Boxed primitives", () => {
 				foo: "Foo"
 			}`);
 		});
-		
+
 		it("resolves internal values with `Boolean#valueOf()`", () => {
 			const value = new Boolean("Yes");
 			Object.defineProperties(value, {
-				valueOf:  {value(){ return false; }},
-				toString: {value(){ return "Nah"; }},
+				valueOf: {
+					value() {
+						return false;
+					},
+				},
+				toString: {
+					value() {
+						return "Nah";
+					},
+				},
 			});
 			expect(value).to.print(`Boolean {
 				true
@@ -67,10 +75,14 @@ describe("Boxed primitives", () => {
 				
 				foo: "Foo"
 			}`);
-			
-			class WeirdBoolean extends Boolean{
-				toString(){ return "Nah"; }
-				valueOf(){ return !super.valueOf(); }
+
+			class WeirdBoolean extends Boolean {
+				toString() {
+					return "Nah";
+				}
+				valueOf() {
+					return !super.valueOf();
+				}
 			}
 			expect(new WeirdBoolean(true)).to.print(`WeirdBoolean {
 				true
@@ -90,7 +102,7 @@ describe("Boxed primitives", () => {
 				-326.2
 			}`);
 		});
-		
+
 		it("prints properties", () => {
 			const value = new Number(48);
 			value.foo = "Foo";
@@ -107,11 +119,19 @@ describe("Boxed primitives", () => {
 				bar: "Bar"
 			}`);
 		});
-		
+
 		it("identifies subclasses", () => {
-			class Double    extends Number{ constructor(n){ super(n * 2); }}
-			class Quadruple extends Double{ constructor(n){ super(n * 2); }}
-			
+			class Double extends Number {
+				constructor(n) {
+					super(n * 2);
+				}
+			}
+			class Quadruple extends Double {
+				constructor(n) {
+					super(n * 2);
+				}
+			}
+
 			let value = new Double(150);
 			expect(value).to.print(`Double {
 				300
@@ -122,7 +142,7 @@ describe("Boxed primitives", () => {
 				
 				foo: "Foo"
 			}`);
-			
+
 			value = new Quadruple(150);
 			expect(value).to.print(`Quadruple {
 				600
@@ -134,10 +154,12 @@ describe("Boxed primitives", () => {
 				bar: "Bar"
 			}`);
 		});
-		
+
 		it("identifies Math.* constants", () => {
-			class MathConstant extends Number{}
-			for(const constant of "E LN10 LN2 LOG10E LOG2E PI SQRT1_2 SQRT2".split(" ")){
+			class MathConstant extends Number {}
+			for (const constant of "E LN10 LN2 LOG10E LOG2E PI SQRT1_2 SQRT2".split(
+				" "
+			)) {
 				let value = new Number(Math[constant]);
 				expect(value).to.print(`Number {
 					Math.${constant}
@@ -148,7 +170,7 @@ describe("Boxed primitives", () => {
 					
 					foo: "Foo"
 				}`);
-				
+
 				value = new MathConstant(Math[constant]);
 				expect(value).to.print(`MathConstant {
 					Math.${constant}
@@ -161,11 +183,14 @@ describe("Boxed primitives", () => {
 				}`);
 			}
 		});
-		
+
 		it("identifies Number.* constants", () => {
-			class MagicNumber extends Number{}
-			const ants = "EPSILON MIN_VALUE MAX_VALUE MIN_SAFE_INTEGER MAX_SAFE_INTEGER".split(" ");
-			for(const constant of ants){
+			class MagicNumber extends Number {}
+			const ants =
+				"EPSILON MIN_VALUE MAX_VALUE MIN_SAFE_INTEGER MAX_SAFE_INTEGER".split(
+					" "
+				);
+			for (const constant of ants) {
 				let value = new Number(Number[constant]);
 				expect(value).to.print(`Number {
 					Number.${constant}
@@ -176,7 +201,7 @@ describe("Boxed primitives", () => {
 					
 					foo: "Foo"
 				}`);
-				
+
 				value = new MagicNumber(Number[constant]);
 				expect(value).to.print(`MagicNumber {
 					Number.${constant}
@@ -189,10 +214,12 @@ describe("Boxed primitives", () => {
 				}`);
 			}
 		});
-		
+
 		it("resolves internal values with `Number#valueOf()`", () => {
 			let value = new Number(258);
-			value.valueOf = function(){ return 30; };
+			value.valueOf = function () {
+				return 30;
+			};
 			expect(value).to.print(`Number {
 				258
 				
@@ -200,7 +227,9 @@ describe("Boxed primitives", () => {
 					│1│ function(){ return 30; }
 				}
 			}`);
-			value.toString = function(){ return "982"; };
+			value.toString = function () {
+				return "982";
+			};
 			expect(value).to.print(`Number {
 				258
 				
@@ -211,10 +240,14 @@ describe("Boxed primitives", () => {
 					│1│ function(){ return "982"; }
 				}
 			}`);
-			
-			class LyingNumber extends Number{
-				toString(){ return "Nah"; }
-				valueOf(){ return -752; }
+
+			class LyingNumber extends Number {
+				toString() {
+					return "Nah";
+				}
+				valueOf() {
+					return -752;
+				}
 			}
 			value = new LyingNumber(32);
 			expect(value).to.print(`LyingNumber {
@@ -240,7 +273,7 @@ describe("Boxed primitives", () => {
 				2: "C"
 			}`);
 		});
-		
+
 		it("prints properties", () => {
 			const value = new String("XYZ");
 			value.foo = "Foo";
@@ -253,9 +286,9 @@ describe("Boxed primitives", () => {
 				foo: "Foo"
 			}`);
 		});
-		
+
 		it("identifies subclasses", () => {
-			class ExtendedString extends String{}
+			class ExtendedString extends String {}
 			const value = new ExtendedString("XYZ");
 			expect(value).to.print(`ExtendedString {
 				"XYZ"
@@ -274,15 +307,15 @@ describe("Boxed primitives", () => {
 				foo: "Foo"
 			}`);
 		});
-		
+
 		it("escapes whitespace characters", () => {
 			const escapeTests = [
 				['"\\t"', new String("\t")],
 				['"\\n"', new String("\n")],
 				['"\\f"', new String("\f")],
 			];
-			class Whitespace extends String{}
-			for(const [char, object] of escapeTests){
+			class Whitespace extends String {}
+			for (const [char, object] of escapeTests) {
 				expect(object).to.print(`String {
 					${char}
 					
@@ -295,7 +328,7 @@ describe("Boxed primitives", () => {
 					0: ${char}
 					foo: "Foo"
 				}`);
-				
+
 				const ws = new Whitespace(object + "");
 				expect(ws).to.print(`Whitespace {
 					${char}
@@ -311,11 +344,15 @@ describe("Boxed primitives", () => {
 				}`);
 			}
 		});
-		
+
 		it("resolves internal values with `String#valueOf()`", () => {
-			let value      = new String("ABC");
-			value.toString = function(){ return "XYZ"; };
-			value.valueOf  = function(){ return "Nah"; };
+			let value = new String("ABC");
+			value.toString = function () {
+				return "XYZ";
+			};
+			value.valueOf = function () {
+				return "Nah";
+			};
 			expect(value).to.print(`String {
 				"ABC"
 				
@@ -329,10 +366,14 @@ describe("Boxed primitives", () => {
 					│1│ function(){ return "Nah"; }
 				}
 			}`);
-			
-			class WeirdString extends String{
-				toString(){ return "XYZ"; }
-				valueOf(){ return "XYZ"; }
+
+			class WeirdString extends String {
+				toString() {
+					return "XYZ";
+				}
+				valueOf() {
+					return "XYZ";
+				}
 			}
 			value = new WeirdString("ABC");
 			expect(value).to.print(`WeirdString {
