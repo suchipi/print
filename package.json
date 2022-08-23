@@ -23,14 +23,17 @@
 		"print.js"
 	],
 	"scripts": {
-		"lint": "make lint",
-		"test": "make test"
+		"lint": "eslint --fix .",
+		"format": "prettier --write .",
+		"test": "c8 mocha",
+		"coverage": "c8 report --reporter text-lcov | coveralls"
 	},
 	"devDependencies": {
 		"@alhadis/eslint-config": "^2.3.2",
 		"@babel/core": "^7.18.13",
 		"@babel/eslint-parser": "^7.18.9",
 		"c8": "^7.1.2",
+		"coveralls": "^3.1.1",
 		"eslint": "^8.22.0",
 		"eslint-config-unobtrusive": "^1.2.5",
 		"eslint-plugin-import": "^2.26.0",
