@@ -11,8 +11,8 @@ module.exports = {
 		es2020: true,
 	},
 	rules: {
-		curly: ["error", "all"],
-		yoda: ["error", "never"],
+		curly: ["warn", "all"],
+		yoda: ["warn", "never"],
 	},
 	ignorePatterns: [".eslintrc.js"],
 	overrides: [
