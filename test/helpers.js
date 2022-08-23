@@ -1,4 +1,4 @@
-import print from "../print.mjs";
+import print from "../print";
 
 export function expect(actual) {
 	return {
@@ -15,14 +15,17 @@ export function expect(actual) {
 			return this.equal(false, "Expected value to be false");
 		},
 		equal(expected, msg = "Expected values to be equal") {
-			if (actual === expected) return this;
+			if (actual === expected) {
+				return this;
+			}
 			actual = actual.replace(/\x1B/g, "\\e");
 			expected = expected.replace(/\x1B/g, "\\e");
 			throw Object.assign(new Error(msg), { actual, expected });
 		},
 		print(expected, ...args) {
-			if ("string" === typeof expected && ~expected.indexOf("\n"))
+			if (typeof expected === "string" && ~expected.indexOf("\n")) {
 				expected = deindent(expected);
+			}
 			actual = print(actual, ...args);
 			return this.equal(expected);
 		},
@@ -35,8 +38,9 @@ export function expect(actual) {
  */
 function deindent(...args) {
 	// Avoid breaking on String.raw if called as an ordinary function
-	if ("object" !== typeof args[0] || "object" !== typeof args[0].raw)
+	if (typeof args[0] !== "object" || typeof args[0].raw !== "object") {
 		return deindent`${args[0]}`;
+	}
 
 	const depthTable = [];
 	let maxDepth = Number.NEGATIVE_INFINITY;
@@ -50,24 +54,34 @@ function deindent(...args) {
 
 	for (const line of chunk.split(/\n/)) {
 		// Ignore whitespace-only lines
-		if (!/\S/.test(line)) continue;
+		if (!/\S/.test(line)) {
+			continue;
+		}
 
 		const indentString = line.match(/^[ \t]*(?=\S|$)/)[0];
 		const indentLength = indentString.replace(/\t/g, " ".repeat(8)).length;
-		if (indentLength < 1) continue;
+		if (indentLength < 1) {
+			continue;
+		}
 
 		const depthStrings = depthTable[indentLength] || [];
 		depthStrings.push(indentString);
 		maxDepth = Math.max(maxDepth, indentLength);
 		minDepth = Math.min(minDepth, indentLength);
-		if (!depthTable[indentLength]) depthTable[indentLength] = depthStrings;
+		if (!depthTable[indentLength]) {
+			depthTable[indentLength] = depthStrings;
+		}
 	}
 
-	if (maxDepth < 1) return chunk;
+	if (maxDepth < 1) {
+		return chunk;
+	}
 
 	const depthStrings = new Set();
 	for (const column of depthTable.slice(0, minDepth + 1)) {
-		if (!column) continue;
+		if (!column) {
+			continue;
+		}
 		depthStrings.add(...column);
 	}
 	depthStrings.delete(undefined);

@@ -23,8 +23,9 @@
  */
 export default function print(value, ...args) {
 	// Resolve arguments
-	if (1 === args.length && args[0] && "object" === typeof args[0])
+	if (args.length === 1 && args[0] && typeof args[0] === "object") {
 		args.unshift(null);
+	}
 
 	let [key, opts = {}, refs = new WeakMap(), path = "", depth = 0, flags = 0] =
 		args;
@@ -36,7 +37,7 @@ export default function print(value, ...args) {
 		input = [...String(input)];
 		let result = "";
 		const { length } = input;
-		for (let ord, chr, i = 0; i < length; ++i)
+		for (let ord, chr, i = 0; i < length; ++i) {
 			switch ((chr = input[i])) {
 				case "\0":
 					result += escColour + "\\0" + prevColour;
@@ -77,17 +78,19 @@ export default function print(value, ...args) {
 							  prevColour
 							: chr;
 			}
+		}
 		return result;
 	};
 
 	// Format symbols and property names
 	const formatKey = (input) => {
-		if ("symbol" === typeof input) {
+		if (typeof input === "symbol") {
 			// Identify well-known symbols using ECMA-262's @@ notation
 			if (!opts.noAmp) {
 				const name = String(input).slice(14, -1);
-				if (input === Symbol[name])
+				if (input === Symbol[name]) {
 					return symbolFade + "@@" + symbol + esc(name, symbol) + off;
+				}
 			}
 			input = esc(input, symbol);
 			input =
@@ -127,12 +130,14 @@ export default function print(value, ...args) {
 			colours = {};
 			break;
 		default:
-			colourMode = colours && "object" === typeof colours ? 2 : 0;
+			colourMode = colours && typeof colours === "object" ? 2 : 0;
 	}
 	colours = { __proto__: null, ...colours };
-	for (const key in colours)
-		if ("number" === typeof colours[key])
+	for (const key in colours) {
+		if (typeof colours[key] === "number") {
 			colours[key] = "\x1B[38;5;" + colours[key] + "m";
+		}
+	}
 	const {
 		off = ["", "\x1B[0m", "\x1B[0m"][colourMode],
 		red = ["", "\x1B[31m", "\x1B[38;5;9m"][colourMode],
@@ -177,7 +182,7 @@ export default function print(value, ...args) {
 	arrowThin = reference + arrowThin + off + " ";
 
 	// Resolve identifiers
-	key = null != key ? (flags & 1 ? key : formatKey(key)) : "";
+	key = key != null ? (flags & 1 ? key : formatKey(key)) : "";
 	path = path ? (key ? path + dot + keys + key : path) : key || "{root}";
 	key += key ? punct + ":" + off + " " : "";
 
@@ -205,15 +210,22 @@ export default function print(value, ...args) {
 			for (const global of [Math, Number]) {
 				const [name, skip] =
 					global === Math ? ["Math", flags & 4] : ["Number", flags & 2];
-				if (skip) continue;
+				if (skip) {
+					continue;
+				}
 				for (const numKey of Object.getOwnPropertyNames(global)) {
-					if (numKey !== numKey.toUpperCase()) continue;
-					if (type === typeof global[numKey] && value === global[numKey])
+					if (numKey !== numKey.toUpperCase()) {
+						continue;
+					}
+					if (type === typeof global[numKey] && value === global[numKey]) {
 						return key + primitive + name + "." + primitive + numKey + off;
+					}
 				}
 			}
 			value = Object.is(value, -0) ? "-0" : String(value);
-			if ("bigint" === type && !value.endsWith("n")) value += "n";
+			if (type === "bigint" && !value.endsWith("n")) {
+				value += "n";
+			}
 			return key + primitive + value + off;
 
 		case "string":
@@ -226,7 +238,9 @@ export default function print(value, ...args) {
 	}
 
 	// Handle circular references
-	if (refs.has(value)) return key + refs.get(value);
+	if (refs.has(value)) {
+		return key + refs.get(value);
+	}
 	refs.set(value, arrowThin + keys + path);
 
 	const linesBefore = [];
@@ -235,7 +249,7 @@ export default function print(value, ...args) {
 	const tooDeep = depth > opts.maxDepth && isFinite(opts.maxDepth);
 	const isArrayBuffer =
 		value instanceof ArrayBuffer ||
-		("function" === typeof SharedArrayBuffer &&
+		(typeof SharedArrayBuffer === "function" &&
 			value instanceof SharedArrayBuffer);
 	let isArrayLike = false;
 	let props = tooDeep || Object.getOwnPropertyNames(value);
@@ -247,16 +261,18 @@ export default function print(value, ...args) {
 
 	// Handle null-prototypes
 	type = Object.getPrototypeOf(value);
-	if (!type) tooDeep || linesBefore.push(nulProt + "Null prototype" + off);
+	if (!type) {
+		tooDeep || linesBefore.push(nulProt + "Null prototype" + off);
+	}
 	// Resolve type annotation
-	else
+	else {
 		switch (type.constructor) {
 			case Object:
 				// Identify argument lists
 				if (
 					isArrayLike &&
 					!value[Symbol.toStringTag] &&
-					"[object Arguments]" === {}.toString.call(value)
+					{}.toString.call(value) === "[object Arguments]"
 				) {
 					type = "Arguments";
 					break;
@@ -270,12 +286,16 @@ export default function print(value, ...args) {
 			default:
 				type = esc(type.constructor.name);
 		}
+	}
 
 	if (!tooDeep) {
-		if (Object.isFrozen(value)) linesBefore.push(frozen + "Frozen" + off);
-		else if (Object.isSealed(value)) linesBefore.push(sealed + "Sealed" + off);
-		else if (!Object.isExtensible(value))
+		if (Object.isFrozen(value)) {
+			linesBefore.push(frozen + "Frozen" + off);
+		} else if (Object.isSealed(value)) {
+			linesBefore.push(sealed + "Sealed" + off);
+		} else if (!Object.isExtensible(value)) {
 			linesBefore.push(noExts + "Non-extensible" + off);
+		}
 	}
 
 	// Dates
@@ -283,7 +303,7 @@ export default function print(value, ...args) {
 		const str = Date.prototype.toString.call(value);
 		linesBefore.push(
 			date +
-				("Invalid Date" === str
+				(str === "Invalid Date"
 					? str
 					: Date.prototype.toISOString.call(value)) +
 				off
@@ -291,10 +311,13 @@ export default function print(value, ...args) {
 	}
 
 	// Regular expressions
-	else if (value instanceof RegExp)
+	else if (value instanceof RegExp) {
 		linesBefore.push(regex + RegExp.prototype.toString.call(value) + off);
+	}
 	// Something without a single-line representation that's beyond our recursion limit
-	else if (tooDeep) linesBefore.push(ellipsis);
+	else if (tooDeep) {
+		linesBefore.push(ellipsis);
+	}
 	// Maps
 	else if (value instanceof Map) {
 		let index = 0,
@@ -353,30 +376,32 @@ export default function print(value, ...args) {
 	}
 
 	// Boxed primitives
-	else if (value instanceof Boolean)
+	else if (value instanceof Boolean) {
 		linesBefore.push(
 			print(true.valueOf.call(value), null, opts, refs, path, depth)
 		);
-	else if (value instanceof Number)
+	} else if (value instanceof Number) {
 		linesBefore.push(
 			print((1).valueOf.call(value), null, opts, refs, path, depth)
 		);
-	else if (value instanceof String)
+	} else if (value instanceof String) {
 		linesBefore.push(
 			print("".valueOf.call(value), null, opts, refs, path, depth)
-		),
-			(isArrayLike = false);
+		);
+		isArrayLike = false;
+	}
 	// Something that quacks like an array
 	else if (isArrayLike || isArrayBuffer) {
 		const entries = isArrayBuffer ? new Uint8Array(value) : value;
 		const { length } = entries;
 
 		// Filter out indexed properties, provided they're genuine
-		if (!isArrayBuffer)
+		if (!isArrayBuffer) {
 			props = props.filter((x) => +x !== ~~x || +x < 0 || x > length - 1);
+		}
 
 		// Byte-arrays: format entries in hexadecimal, and arrange in od(1)-like columns
-		if (!opts.noHex && entries instanceof Uint8Array)
+		if (!opts.noHex && entries instanceof Uint8Array) {
 			for (let i = 0; i < length; i += 16) {
 				const offset =
 					hexBorder +
@@ -392,12 +417,14 @@ export default function print(value, ...args) {
 					.join(" ");
 				linesBefore.push(offset + hexValue + " " + row);
 			}
+		}
 		// Otherwise, list contents vertically
 		else {
 			let lastIndex = -1;
 			[].forEach.call(entries, (x, i) => {
-				if (lastIndex < i - 1)
+				if (lastIndex < i - 1) {
 					linesBefore.push(empty + `${i - lastIndex - 1}` + off);
+				}
 				linesBefore.push(
 					print(
 						x,
@@ -410,13 +437,14 @@ export default function print(value, ...args) {
 				);
 				lastIndex = i;
 			});
-			if (lastIndex < length - 1)
+			if (lastIndex < length - 1) {
 				linesBefore.push(empty + `${length - lastIndex - 1}`);
+			}
 		}
 	}
 
 	// Display the source code of function objects
-	if ("function" === typeof value && !opts.noSource && !tooDeep) {
+	if (typeof value === "function" && !opts.noSource && !tooDeep) {
 		const source = [...Function.prototype.toString.call(value)];
 		const lines = [];
 		const { length } = source;
@@ -426,7 +454,7 @@ export default function print(value, ...args) {
 					str += chr;
 					break;
 				case "\r":
-					"\n" === source[i + 1] && ++i; // Fall-through
+					source[i + 1] === "\n" && ++i; // Fall-through
 				case "\n":
 				case "\u2028":
 				case "\u2029":
@@ -482,7 +510,9 @@ export default function print(value, ...args) {
 			const desc = Object.getOwnPropertyDescriptor(value, prop);
 
 			// Skip non-enumerable properties by default
-			if (!desc.enumerable && !opts.all) continue;
+			if (!desc.enumerable && !opts.all) {
+				continue;
+			}
 
 			// Getter and/or setter
 			if (desc.get || desc.set) {
@@ -496,17 +526,20 @@ export default function print(value, ...args) {
 					propLines.push(print(result, prop, opts, refs, path, depth, flags));
 				} else {
 					prop = formatKey(prop);
-					if (desc.get)
+					if (desc.get) {
 						propLines.push(
 							print(desc.get, `get ${prop}`, opts, refs, path, depth, flags | 1)
 						);
-					if (desc.set)
+					}
+					if (desc.set) {
 						propLines.push(
 							print(desc.set, `set ${prop}`, opts, refs, path, depth, flags | 1)
 						);
+					}
 				}
-			} else
+			} else {
 				propLines.push(print(desc.value, prop, opts, refs, path, depth, flags));
+			}
 		}
 	}
 
@@ -519,12 +552,16 @@ export default function print(value, ...args) {
 	const numProps = propLines.length;
 	if (
 		!numProps &&
-		("RegExp" === type || "Date" === type) &&
-		1 === linesBefore.length
-	)
-		(value = linesBefore), (type = "");
+		(type === "RegExp" || type === "Date") &&
+		linesBefore.length === 1
+	) {
+		value = linesBefore;
+		type = "";
+	}
 	// Keep truncated objects on one line
-	else if (tooDeep) value.splice(1, 1, linesBefore[0]);
+	else if (tooDeep) {
+		value.splice(1, 1, linesBefore[0]);
+	}
 	// Otherwise, tally our lists and inject padding where it's needed
 	else {
 		if (linesBefore.length) {
@@ -535,10 +572,15 @@ export default function print(value, ...args) {
 			numProps && linesAfter.unshift("");
 			propLines.push(...linesAfter);
 		}
-		if (propLines.length)
-			for (const prop of propLines)
-				for (const line of prop.split("\n")) value[1] += `\t${line}\n`;
-		else value[1] = "";
+		if (propLines.length) {
+			for (const prop of propLines) {
+				for (const line of prop.split("\n")) {
+					value[1] += `\t${line}\n`;
+				}
+			}
+		} else {
+			value[1] = "";
+		}
 	}
 
 	return key + (type ? typeColour + type + off + " " : "") + value.join("");

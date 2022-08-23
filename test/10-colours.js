@@ -1,5 +1,5 @@
-import print from "../print.mjs";
-import { expect } from "./helpers.mjs";
+import print from "../print";
+import { expect } from "./helpers";
 import { readFileSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";

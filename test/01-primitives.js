@@ -1,4 +1,4 @@
-import { expect } from "./helpers.mjs";
+import { expect } from "./helpers";
 
 describe("Primitives", () => {
 	it("prints null", () => expect(null).to.print("null"));
@@ -62,7 +62,7 @@ describe("Primitives", () => {
 		it("escapes other controls", () => {
 			const c0 = [1, 2, 3, 4, 5, 6, 28, 29, 30, 31];
 			const c1 = new Array(16).fill(0).map((x, i) => i + 128);
-			for (let i = 14; i < 27; c0.push(i++));
+			for (let i = 14; i < 27; c0.push(i++)) {}
 			for (const code of [...c0, ...c1]) {
 				const hex = code.toString(16).padStart(2, "0").toUpperCase();
 				expect(String.fromCharCode(code)).to.print(`"\\x${hex}"`);
@@ -111,7 +111,7 @@ describe("Primitives", () => {
 			Object.defineProperty(globalThis, "String", {
 				configurable: true,
 				value: (input) =>
-					"symbol" === typeof input
+					typeof input === "symbol"
 						? input.toString().replace(/^Symbol\(|\)$/g, "")
 						: desc.value.call(globalThis, input),
 			});

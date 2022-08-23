@@ -1,4 +1,4 @@
-import { expect } from "./helpers.mjs";
+import { expect } from "./helpers";
 
 describe("Regular expressions", () => {
 	it("prints simple regex", () => {

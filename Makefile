@@ -10,7 +10,7 @@ node_modules:
 
 # Check source for errors and style violations
 lint: install
-	npx eslint .
+	npx eslint --fix . && npx prettier --write .
 
 .PHONY: lint
 

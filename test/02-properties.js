@@ -1,5 +1,5 @@
-import { expect } from "./helpers.mjs";
-import print from "../print.mjs";
+import { expect } from "./helpers";
+import print from "../print";
 
 describe("Property fields", () => {
 	it("prints string-valued properties", () => {
@@ -203,14 +203,14 @@ describe("Property fields", () => {
 		it("doesn't identify them when printing their owners", () => {
 			let lines = print(Math, { all: true }).split("\n");
 			expect(lines.some((line) => "PI: " + Math.PI === line.trim())).to.be.true;
-			expect(lines.some((line) => "PI: Math.PI" === line.trim())).to.be.false;
+			expect(lines.some((line) => line.trim() === "PI: Math.PI")).to.be.false;
 
 			lines = print(Number, { all: true }).split("\n");
 			expect(
 				lines.some((line) => "MAX_VALUE: " + Number.MAX_VALUE === line.trim())
 			).to.be.true;
 			expect(
-				lines.some((line) => "MAX_VALUE: Number.MAX_VALUE" === line.trim())
+				lines.some((line) => line.trim() === "MAX_VALUE: Number.MAX_VALUE")
 			).to.be.false;
 
 			const name = "REFERENCE_TO_MAGICAL_NUMBER_THING";

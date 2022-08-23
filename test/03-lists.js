@@ -1,5 +1,5 @@
-import { expect } from "./helpers.mjs";
-import print from "../print.mjs";
+import { expect } from "./helpers";
+import print from "../print";
 
 describe("Lists", () => {
 	describe("Arrays", () => {
@@ -434,7 +434,7 @@ describe("Lists", () => {
 
 		// NB: This technically isn't a typed array, but we format it like one.
 		describe("ArrayBuffers", () => {
-			const haveShared = "function" === typeof SharedArrayBuffer;
+			const haveShared = typeof SharedArrayBuffer === "function";
 			const share = (array) => {
 				const buffer = new SharedArrayBuffer(array.length);
 				const view = new DataView(buffer);

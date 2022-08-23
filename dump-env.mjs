@@ -1,7 +1,7 @@
 #!/bin/sh
 //bin/sh -c :; exec node "$0" -- "$@"; # -*- JS -*-
 
-import print from "./print.mjs";
+import print from "./print";
 
 const str = print(globalThis, "globalThis", {
 	all: true,
