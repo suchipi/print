@@ -28,9 +28,48 @@ export interface PrintOptions {
 
 	/** Whether to sort properties alphabetically. When false, properties are sorted by creation order. Defaults to false. */
 	sort?: boolean;
+
+	/** Options that control whether and how ANSI terminal escape sequences for colours should be added to the output. Defaults to false, meaning no colours. */
+	colours?: boolean | 256 | 8 | Colours;
 }
 
-interface PrintFunction {
+export interface Colours {
+	off?: string;
+	red?: string;
+	grey?: string;
+	green?: string;
+	darkGreen?: string;
+	punct?: string;
+	keys?: string;
+	keyEscape?: string;
+	typeColour?: string;
+	primitive?: string;
+	escape?: string;
+	date?: string;
+	hexBorder?: string;
+	hexValue?: string;
+	hexOffset?: string;
+	reference?: string;
+	srcBorder?: string;
+	srcRowNum?: string;
+	srcRowText?: string;
+	nul?: string;
+	nulProt?: string;
+	undef?: string;
+	noExts?: string;
+	frozen?: string;
+	sealed?: string;
+	regex?: string;
+	string?: string;
+	symbol?: string;
+	symbolFade?: string;
+	braces?: string;
+	quotes?: string;
+	empty?: string;
+	dot?: string;
+}
+
+export interface PrintFunction {
 	/**
 	 * Generate a human-readable representation of a value.
 	 *

@@ -9,78 +9,6 @@ function print(value, ...args) {
 	let type = typeof value;
 	++depth;
 
-	// Escape control characters in string output
-	const esc = (input, prevColour = off, escColour = escape) => {
-		input = [...String(input)];
-		let result = "";
-		const { length } = input;
-		for (let ord, chr, i = 0; i < length; ++i) {
-			switch ((chr = input[i])) {
-				case "\0":
-					result += escColour + "\\0" + prevColour;
-					break;
-				case "\b":
-					result += escColour + "\\b" + prevColour;
-					break;
-				case "\t":
-					result += escColour + "\\t" + prevColour;
-					break;
-				case "\n":
-					result += escColour + "\\n" + prevColour;
-					break;
-				case "\f":
-					result += escColour + "\\f" + prevColour;
-					break;
-				case "\r":
-					result += escColour + "\\r" + prevColour;
-					break;
-				case "\v":
-					result += escColour + "\\v" + prevColour;
-					break;
-				case "\\":
-					result += escColour + "\\\\" + prevColour;
-					break;
-				case "\x07":
-					result += escColour + "\\a" + prevColour;
-					break;
-				case "\x1B":
-					result += escColour + "\\e" + prevColour;
-					break;
-				default:
-					result +=
-						(ord = chr.charCodeAt(0)) < 256 && !(96 & ord)
-							? escColour +
-							  "\\x" +
-							  ord.toString(16).padStart(2, "0").toUpperCase() +
-							  prevColour
-							: chr;
-			}
-		}
-		return result;
-	};
-
-	// Format symbols and property names
-	const formatKey = (input) => {
-		if (typeof input === "symbol") {
-			// Identify well-known symbols using ECMA-262's @@ notation
-			if (!opts.noAmp) {
-				const name = String(input).slice(14, -1);
-				if (input === Symbol[name]) {
-					return symbolFade + "@@" + symbol + esc(name, symbol) + off;
-				}
-			}
-			input = esc(input, symbol);
-			input =
-				input.startsWith("Symbol(") && input.endsWith(")")
-					? input.slice(7, -1)
-					: input;
-			return `${symbol}Symbol${symbolFade}(${
-				symbol + input + symbolFade
-			})${off}`;
-		}
-		return keys + esc(input, keys, keyEscape) + off;
-	};
-
 	// Resolve decorator characters
 	let {
 		arrowFat = "=>",
@@ -158,10 +86,82 @@ function print(value, ...args) {
 	arrowFat = punct + arrowFat + off + " ";
 	arrowThin = reference + arrowThin + off + " ";
 
+	// Format symbols and property names
+	function formatKey(input) {
+		if (typeof input === "symbol") {
+			// Identify well-known symbols using ECMA-262's @@ notation
+			if (!opts.noAmp) {
+				const name = String(input).slice(14, -1);
+				if (input === Symbol[name]) {
+					return symbolFade + "@@" + symbol + esc(name, symbol) + off;
+				}
+			}
+			input = esc(input, symbol);
+			input =
+				input.startsWith("Symbol(") && input.endsWith(")")
+					? input.slice(7, -1)
+					: input;
+			return `${symbol}Symbol${symbolFade}(${
+				symbol + input + symbolFade
+			})${off}`;
+		}
+		return keys + esc(input, keys, keyEscape) + off;
+	}
+
 	// Resolve identifiers
 	key = key != null ? (flags & 1 ? key : formatKey(key)) : "";
 	path = path ? (key ? path + dot + keys + key : path) : key || "{root}";
 	key += key ? punct + ":" + off + " " : "";
+
+	// Escape control characters in string output
+	function esc(input, prevColour = off, escColour = escape) {
+		input = [...String(input)];
+		let result = "";
+		const { length } = input;
+		for (let ord, chr, i = 0; i < length; ++i) {
+			switch ((chr = input[i])) {
+				case "\0":
+					result += escColour + "\\0" + prevColour;
+					break;
+				case "\b":
+					result += escColour + "\\b" + prevColour;
+					break;
+				case "\t":
+					result += escColour + "\\t" + prevColour;
+					break;
+				case "\n":
+					result += escColour + "\\n" + prevColour;
+					break;
+				case "\f":
+					result += escColour + "\\f" + prevColour;
+					break;
+				case "\r":
+					result += escColour + "\\r" + prevColour;
+					break;
+				case "\v":
+					result += escColour + "\\v" + prevColour;
+					break;
+				case "\\":
+					result += escColour + "\\\\" + prevColour;
+					break;
+				case "\x07":
+					result += escColour + "\\a" + prevColour;
+					break;
+				case "\x1B":
+					result += escColour + "\\e" + prevColour;
+					break;
+				default:
+					result +=
+						(ord = chr.charCodeAt(0)) < 256 && !(96 & ord)
+							? escColour +
+							  "\\x" +
+							  ord.toString(16).padStart(2, "0").toUpperCase() +
+							  prevColour
+							: chr;
+			}
+		}
+		return result;
+	}
 
 	// Special primitives that need no introduction
 	switch (value) {
@@ -178,8 +178,10 @@ function print(value, ...args) {
 
 	// Primitive values
 	switch (type) {
-		default:
-			return key + formatKey(value);
+		// Handled outside of this switch
+		case "object":
+		case "function":
+			break;
 
 		case "bigint":
 		case "number":
@@ -208,10 +210,8 @@ function print(value, ...args) {
 		case "string":
 			return key + quoteLeft + esc(value, string) + quoteRight;
 
-		// Dummy entries needed to keep `default` case from matching objects
-		case "object":
-		case "function":
-			break;
+		default:
+			return key + formatKey(value);
 	}
 
 	// Handle circular references
@@ -231,14 +231,15 @@ function print(value, ...args) {
 	let isArrayLike = false;
 	let props = tooDeep || Object.getOwnPropertyNames(value);
 
-	// Ignore gripes from `TypedArray.prototype.length`
 	try {
-		isArrayLike = Symbol.iterator in value && +value.length >= 0;
-	} catch (e) {}
+		isArrayLike = Symbol.iterator in value && Number(value.length) >= 0;
+	} catch (e) {
+		// Ignore gripes from `TypedArray.prototype.length`
+	}
 
 	// Handle null-prototypes
 	type = Object.getPrototypeOf(value);
-	if (!type) {
+	if (type === null) {
 		tooDeep || linesBefore.push(nulProt + "Null prototype" + off);
 	}
 	// Resolve type annotation
@@ -462,10 +463,11 @@ function print(value, ...args) {
 	if (!tooDeep) {
 		// Handle property sorting
 		props.push(...Object.getOwnPropertySymbols(value));
-		opts.sort &&
+		if (opts.sort) {
 			props.sort((a, b) =>
 				String(a).toLowerCase().localeCompare(String(b).toLowerCase())
 			);
+		}
 
 		// Identify Number/Math globals so we know when not to identify “magic” numbers
 		flags = ((Math === value) << 2) | ((Number === value) << 1);
@@ -521,7 +523,7 @@ function print(value, ...args) {
 	}
 
 	// Pick an appropriate pair of brackets
-	value = isArrayLike
+	let valueParts = isArrayLike
 		? [punct + "[" + off, "\n", punct + "]" + off]
 		: [punct + "{" + off, "\n", punct + "}" + off];
 
@@ -532,12 +534,12 @@ function print(value, ...args) {
 		(type === "RegExp" || type === "Date") &&
 		linesBefore.length === 1
 	) {
-		value = linesBefore;
+		valueParts = linesBefore;
 		type = "";
 	}
 	// Keep truncated objects on one line
 	else if (tooDeep) {
-		value.splice(1, 1, linesBefore[0]);
+		valueParts.splice(1, 1, linesBefore[0]);
 	}
 	// Otherwise, tally our lists and inject padding where it's needed
 	else {
@@ -552,15 +554,17 @@ function print(value, ...args) {
 		if (propLines.length) {
 			for (const prop of propLines) {
 				for (const line of prop.split("\n")) {
-					value[1] += `\t${line}\n`;
+					valueParts[1] += `\t${line}\n`;
 				}
 			}
 		} else {
-			value[1] = "";
+			valueParts[1] = "";
 		}
 	}
 
-	return key + (type ? typeColour + type + off + " " : "") + value.join("");
+	return (
+		key + (type ? typeColour + type + off + " " : "") + valueParts.join("")
+	);
 }
 
 module.exports = print;
