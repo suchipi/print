@@ -15,6 +15,7 @@
  * @param  {Boolean} [opts.noSource]      - Don't display function source code
  * @param  {Boolean} [opts.proto]         - Show `__proto__` properties if possible
  * @param  {Boolean} [opts.sort]          - Sort properties alphabetically
+ * @param  {*}       [opts.colours]       - Options for printing in color
  * @param  {WeakMap} [refs=new WeakMap()] - Tracked object references (internal-use only)
  * @param  {String}  [path=""]            - Accessor string used to identify a reference
  * @param  {Number}  [depth=0]            - Current recursion level
