@@ -16,6 +16,7 @@
  * @param  {Boolean} [opts.proto]         - Show `__proto__` properties if possible
  * @param  {Boolean} [opts.sort]          - Sort properties alphabetically
  * @param  {*}       [opts.colours]       - Options for printing in color
+ * @param  {String}  [opts.indent]        - Prefix string to use for indentation. Defaults to '\t'.
  * @param  {WeakMap} [refs=new WeakMap()] - Tracked object references (internal-use only)
  * @param  {String}  [path=""]            - Accessor string used to identify a reference
  * @param  {Number}  [depth=0]            - Current recursion level
@@ -32,6 +33,8 @@ function print(value, ...args) {
 		args;
 	let type = typeof value;
 	++depth;
+
+	let indent = typeof opts.indent === "string" ? opts.indent : "\t";
 
 	// Resolve decorator characters
 	let {
@@ -578,7 +581,7 @@ function print(value, ...args) {
 		if (propLines.length) {
 			for (const prop of propLines) {
 				for (const line of prop.split("\n")) {
-					valueParts[1] += `\t${line}\n`;
+					valueParts[1] += `${indent}${line}\n`;
 				}
 			}
 		} else {

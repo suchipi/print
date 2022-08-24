@@ -31,6 +31,9 @@ export interface PrintOptions {
 
 	/** Options that control whether and how ANSI terminal escape sequences for colours should be added to the output. Defaults to false, meaning no colours. */
 	colours?: boolean | 256 | 8 | Colours;
+
+	/** Prefix string to use for indentation. Defaults to '\t'. */
+	indent?: string;
 }
 
 export interface Colours {

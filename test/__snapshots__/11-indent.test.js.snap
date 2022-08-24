@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Indentation can be overridden 1`] = `
+{
+  a: {
+    b: {
+      c: {
+        d: {}
+      }
+    }
+  }
+}
+`;
+
+exports[`Indentation can be overridden 2`] = `
+{
+ a: {
+  b: {
+   c: {
+    d: {}
+   }
+  }
+ }
+}
+`;
+
+exports[`Indentation can be overridden 3`] = `
+{
+a: {
+b: {
+c: {
+d: {}
+}
+}
+}
+}
+`;
+
+exports[`Indentation can be overridden 4`] = `
+{
+_hia: {
+_hi_hib: {
+_hi_hi_hic: {
+_hi_hi_hi_hid: {}
+_hi_hi_hi}
+_hi_hi}
+_hi}
+}
+`;
+
+exports[`Indentation defaults to tab 1`] = `
+{
+	a: {
+		b: {
+			c: {
+				d: {}
+			}
+		}
+	}
+}
+`;
