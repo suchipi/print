@@ -1,3 +1,26 @@
+/** @typedef {String|Symbol} Key */
+
+/**
+ * Generate a human-readable representation of a value.
+ *
+ * @param  {*}       value                - Value to inspect
+ * @param  {Key}     [key]                - The value's corresponding member name
+ * @param  {Object}  [opts]               - Additional settings for refining output
+ * @param  {Boolean} [opts.all]           - Display non-enumerable properties
+ * @param  {Boolean} [opts.followGetters] - Invoke getter functions
+ * @param  {Boolean} [opts.indexes]       - Display the indexes of iterable entries
+ * @param  {Number}  [opts.maxDepth]      - Hide object details after 𝑁 recursions
+ * @param  {Boolean} [opts.noAmp]         - Don't identify well-known symbols as `@@…`
+ * @param  {Boolean} [opts.noHex]         - Don't format byte-arrays as hexadecimal
+ * @param  {Boolean} [opts.noSource]      - Don't display function source code
+ * @param  {Boolean} [opts.proto]         - Show `__proto__` properties if possible
+ * @param  {Boolean} [opts.sort]          - Sort properties alphabetically
+ * @param  {WeakMap} [refs=new WeakMap()] - Tracked object references (internal-use only)
+ * @param  {String}  [path=""]            - Accessor string used to identify a reference
+ * @param  {Number}  [depth=0]            - Current recursion level
+ * @param  {Number}  [flags=0]            - Bitmask of flags used internally
+ * @return {String}
+ */
 function print(value, ...args) {
 	// Resolve arguments
 	if (args.length === 1 && args[0] && typeof args[0] === "object") {
