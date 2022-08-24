@@ -34,39 +34,39 @@ export interface PrintOptions {
 }
 
 export interface Colours {
-	off?: string;
-	red?: string;
-	grey?: string;
-	green?: string;
-	darkGreen?: string;
-	punct?: string;
-	keys?: string;
-	keyEscape?: string;
-	typeColour?: string;
-	primitive?: string;
-	escape?: string;
-	date?: string;
-	hexBorder?: string;
-	hexValue?: string;
-	hexOffset?: string;
-	reference?: string;
-	srcBorder?: string;
-	srcRowNum?: string;
-	srcRowText?: string;
-	nul?: string;
-	nulProt?: string;
-	undef?: string;
-	noExts?: string;
-	frozen?: string;
-	sealed?: string;
-	regex?: string;
-	string?: string;
-	symbol?: string;
-	symbolFade?: string;
-	braces?: string;
-	quotes?: string;
-	empty?: string;
-	dot?: string;
+	off?: string | number;
+	red?: string | number;
+	grey?: string | number;
+	green?: string | number;
+	darkGreen?: string | number;
+	punct?: string | number;
+	keys?: string | number;
+	keyEscape?: string | number;
+	typeColour?: string | number;
+	primitive?: string | number;
+	escape?: string | number;
+	date?: string | number;
+	hexBorder?: string | number;
+	hexValue?: string | number;
+	hexOffset?: string | number;
+	reference?: string | number;
+	srcBorder?: string | number;
+	srcRowNum?: string | number;
+	srcRowText?: string | number;
+	nul?: string | number;
+	nulProt?: string | number;
+	undef?: string | number;
+	noExts?: string | number;
+	frozen?: string | number;
+	sealed?: string | number;
+	regex?: string | number;
+	string?: string | number;
+	symbol?: string | number;
+	symbolFade?: string | number;
+	braces?: string | number;
+	quotes?: string | number;
+	empty?: string | number;
+	dot?: string | number;
 }
 
 export interface PrintFunction {
