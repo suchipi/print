@@ -1,8 +1,4 @@
 const print = require("../print");
-const { readFileSync } = require("fs");
-const { join } = require("path");
-
-const file = (x) => readFileSync(join(__dirname, ...x.split("/")), "utf8");
 
 describe("Coloured output", () => {
 	it("colours primitives", () => {
@@ -40,12 +36,10 @@ describe("Coloured output", () => {
 
 	it("colours punctuation", () => {
 		const obj = { foo: NaN, bar: [{}, 1, []] };
-		const exp1 = file("fixtures/punctuation-256.out");
-		const exp2 = file("fixtures/punctuation-8.out");
-		expect(print(obj, { colours: {} })).toEqual(exp1);
-		expect(print(obj, { colours: true })).toEqual(exp1);
-		expect(print(obj, { colours: 256 })).toEqual(exp1);
-		expect(print(obj, { colours: 8 })).toEqual(exp2);
+		expect(print(obj, { colours: {} })).toMatchSnapshot();
+		expect(print(obj, { colours: true })).toMatchSnapshot();
+		expect(print(obj, { colours: 256 })).toMatchSnapshot();
+		expect(print(obj, { colours: 8 })).toMatchSnapshot();
 	});
 
 	it("colours references", () => {
@@ -67,12 +61,10 @@ describe("Coloured output", () => {
 		map.bar2 = map["0.value"];
 		const input = { set, map };
 
-		const exp1 = file("fixtures/references-256.out");
-		const exp2 = file("fixtures/references-8.out");
-		expect(print(input, "input", { colours: {} })).toEqual(exp1);
-		expect(print(input, "input", { colours: true })).toEqual(exp1);
-		expect(print(input, "input", { colours: 256 })).toEqual(exp1);
-		expect(print(input, "input", { colours: 8 })).toEqual(exp2);
+		expect(print(input, "input", { colours: {} })).toMatchSnapshot();
+		expect(print(input, "input", { colours: true })).toMatchSnapshot();
+		expect(print(input, "input", { colours: 256 })).toMatchSnapshot();
+		expect(print(input, "input", { colours: 8 })).toMatchSnapshot();
 	});
 
 	describe("User-defined colours", () => {
@@ -84,28 +76,24 @@ describe("Coloured output", () => {
 		obj.qux.set({}, obj.qux.get(obj.bar)[0]);
 		obj.qux.set({}, obj.qux.get(obj.bar)[0].value);
 
-		const custom1 = file("fixtures/custom-1.out");
-		const custom2 = file("fixtures/custom-2.out");
-		const custom3 = file("fixtures/custom-3.out");
-
 		it("accepts user-defined colour sequences", () => {
 			const colours = { keys: "\x1B[38;5;200m" };
-			expect(print(obj, "input", { colours })).toEqual(custom1);
+			expect(print(obj, "input", { colours })).toMatchSnapshot();
 
 			colours.string = "\x1B[38;5;11m";
 			colours.quotes = "\x1B[38;5;16m";
 			colours.keys = "\x1B[7m";
 			colours.punct = "\x1B[27m";
-			expect(print(obj, "input", { colours })).toEqual(custom2);
+			expect(print(obj, "input", { colours })).toMatchSnapshot();
 		});
 
 		it("treats numbers as ANSI colour indexes", () => {
 			const colours = { keys: 200 };
-			expect(print(obj, "input", { colours })).toEqual(custom1);
+			expect(print(obj, "input", { colours })).toMatchSnapshot();
 			colours.string = 11;
 			colours.quotes = 16;
 			delete colours.keys;
-			expect(print(obj, "input", { colours })).toEqual(custom3);
+			expect(print(obj, "input", { colours })).toMatchSnapshot();
 		});
 	});
 });
