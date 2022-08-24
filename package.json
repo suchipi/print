@@ -11,12 +11,13 @@
 		"format",
 		"string"
 	],
-	"repository": "https://github.com/Alhadis/Print",
+	"repository": "https://github.com/suchipi/print",
 	"license": "ISC",
 	"main": "print.js",
 	"types": "print.d.ts",
 	"files": [
-		"print.js"
+		"print.js",
+		"print.d.ts"
 	],
 	"scripts": {
 		"lint": "eslint .",
