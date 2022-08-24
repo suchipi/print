@@ -30,6 +30,27 @@ export interface PrintOptions {
 	sort?: boolean;
 }
 
+interface PrintFunction {
+	/**
+	 * Generate a human-readable representation of a value.
+	 *
+	 * @param value - Value to inspect
+	 * @param options - Additional settings for refining output
+	 * @returns A string representation of `value`.
+	 */
+	(value: any, options?: PrintOptions): string;
+
+	/**
+	 * Generate a human-readable representation of a value.
+	 *
+	 * @param value - Value to inspect
+	 * @param key - The value's corresponding member name
+	 * @param options - Additional settings for refining output
+	 * @returns A string representation of `value`.
+	 */
+	(value: any, key?: string | symbol, options?: PrintOptions): string;
+}
+
 /**
  * Generate a human-readable representation of a value.
  *
@@ -38,18 +59,6 @@ export interface PrintOptions {
  * @param options - Additional settings for refining output
  * @returns A string representation of `value`.
  */
-declare var print: (
-	value: any,
-	key?: string | symbol,
-	options?: PrintOptions
-
-	// This function accepts more arguments, but they're for
-	// internal use only:
-
-	// refs?: WeakMap<any>,
-	// path?: string,
-	// depth?: number,
-	// flags?: number
-) => string;
+declare var print: PrintFunction;
 
 export = print;
