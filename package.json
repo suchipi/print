@@ -14,13 +14,15 @@
 	"repository": "https://github.com/Alhadis/Print",
 	"license": "ISC",
 	"main": "print.js",
+	"types": "print.d.ts",
 	"files": [
 		"print.js"
 	],
 	"scripts": {
 		"lint": "eslint .",
 		"format": "prettier --write .",
-		"test": "jest --coverage --coverage-provider v8 --test-environment node"
+		"test": "jest --coverage --coverage-provider v8 --test-environment node",
+		"view-coverage": "http-server coverage/lcov-report"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.18.13",
@@ -28,6 +30,7 @@
 		"eslint": "^8.22.0",
 		"eslint-config-unobtrusive": "^1.2.5",
 		"eslint-plugin-import": "^2.26.0",
+		"http-server": "^14.1.1",
 		"jest": "^28.1.3",
 		"jest-snapshot-serializer-raw": "^1.2.0",
 		"prettier": "^2.7.1"
