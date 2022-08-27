@@ -1,4 +1,4 @@
-const print = require("../print");
+const { print } = require("./helpers");
 
 describe("Regular expressions", () => {
 	it("prints simple regex", () => {

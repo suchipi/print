@@ -1,4 +1,4 @@
-const print = require("../print");
+const { print } = require("./helpers");
 
 describe("Object references", () => {
 	it("refers to input using a label", () => {

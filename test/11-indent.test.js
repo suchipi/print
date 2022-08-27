@@ -1,4 +1,4 @@
-const print = require("../print");
+const { print } = require("./helpers");
 
 describe("Indentation", () => {
 	const value = { a: { b: { c: { d: {} } } } };

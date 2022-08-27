@@ -9,6 +9,18 @@ BadMap {
 	1.value => 2
 	
 	RangeError {
+		RangeError: You're out
+			at Object.next (<rootDir>/test/09-collections.test.js:LINE:COL)
+			at print (<rootDir>/print.js:LINE:COL)
+			at realPrint (<rootDir>/test/helpers.js:LINE:COL)
+			at Object.print (<rootDir>/test/09-collections.test.js:LINE:COL)
+			at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+			at new Promise (<anonymous>)
+			at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+			at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+			at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
+			at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		
 		strikes: 3
 	}
 }
@@ -262,6 +274,18 @@ BadSet {
 	0 => 1
 	1 => 2
 	RangeError {
+		RangeError: You're out
+			at Object.next (<rootDir>/test/09-collections.test.js:LINE:COL)
+			at v (<rootDir>/print.js:LINE:COL)
+			at realPrint (<rootDir>/test/helpers.js:LINE:COL)
+			at Object.print (<rootDir>/test/09-collections.test.js:LINE:COL)
+			at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+			at new Promise (<anonymous>)
+			at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+			at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+			at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
+			at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		
 		strikes: 3
 	}
 }

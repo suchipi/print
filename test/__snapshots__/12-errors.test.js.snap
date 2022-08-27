@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Errors V8-style prints error properties 1`] = `
+Error {
+	Error: hello there
+		at V8-style (<rootDir>/test/12-errors.test.js:LINE:COL)
+		at Object.makeError (<rootDir>/test/12-errors.test.js:LINE:COL)
+		at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+		at new Promise (<anonymous>)
+		at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+		at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
+		at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+	
+	path: "/some/where/idk"
+	code: 45
+}
+`;
+
+exports[`Errors V8-style prints normal errors as expected 1`] = `
+Error {
+	Error: hello there
+		at V8-style (<rootDir>/test/12-errors.test.js:LINE:COL)
+		at Object.makeError (<rootDir>/test/12-errors.test.js:LINE:COL)
+		at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+		at new Promise (<anonymous>)
+		at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+		at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
+		at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+}
+`;
+
+exports[`Errors V8-style reformats stack with requested indentation 1`] = `
+Error {
+__Error: hello there
+____at V8-style (<rootDir>/test/12-errors.test.js:LINE:COL)
+____at Object.makeError (<rootDir>/test/12-errors.test.js:LINE:COL)
+____at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+____at new Promise (<anonymous>)
+____at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+____at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+____at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
+____at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+____at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+____at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+}
+`;
+
+exports[`Errors quickjs-style prints error properties 1`] = `
+Error {
+	Error: hello there
+		at <eval> (<evalScript>)
+		at evalScript (native)
+		at eval_and_print
+		at handle_cmd
+		at readline_handle_cmd
+		at handle_key
+		at handle_char
+		at handle_byte
+		at term_read_handler
+	
+	path: "/some/where/idk"
+	code: 45
+}
+`;
+
+exports[`Errors quickjs-style prints normal errors as expected 1`] = `
+Error {
+	Error: hello there
+		at <eval> (<evalScript>)
+		at evalScript (native)
+		at eval_and_print
+		at handle_cmd
+		at readline_handle_cmd
+		at handle_key
+		at handle_char
+		at handle_byte
+		at term_read_handler
+}
+`;
+
+exports[`Errors quickjs-style reformats stack with requested indentation 1`] = `
+Error {
+__Error: hello there
+____at <eval> (<evalScript>)
+____at evalScript (native)
+____at eval_and_print
+____at handle_cmd
+____at readline_handle_cmd
+____at handle_key
+____at handle_char
+____at handle_byte
+____at term_read_handler
+}
+`;
+
+exports[`Errors spidermonkey eval-style prints error properties 1`] = `
+Error {
+	Error: hello there
+	@file:///C:/example.html line 7 > eval line 1 > eval:1:1
+	@file:///C:/example.html line 7 > eval:1:1
+	@file:///C:/example.html:7:6
+	
+	path: "/some/where/idk"
+	code: 45
+}
+`;
+
+exports[`Errors spidermonkey eval-style prints normal errors as expected 1`] = `
+Error {
+	Error: hello there
+	@file:///C:/example.html line 7 > eval line 1 > eval:1:1
+	@file:///C:/example.html line 7 > eval:1:1
+	@file:///C:/example.html:7:6
+}
+`;
+
+exports[`Errors spidermonkey eval-style reformats stack with requested indentation 1`] = `
+Error {
+__Error: hello there
+__@file:///C:/example.html line 7 > eval line 1 > eval:1:1
+__@file:///C:/example.html line 7 > eval:1:1
+__@file:///C:/example.html:7:6
+}
+`;
+
+exports[`Errors spidermonkey-style prints error properties 1`] = `
+Error {
+	Error: hello there
+	trace@file:///C:/example.html:9:17
+	b@file:///C:/example.html:16:13
+	a@file:///C:/example.html:19:13
+	@file:///C:/example.html:21:9
+	
+	path: "/some/where/idk"
+	code: 45
+}
+`;
+
+exports[`Errors spidermonkey-style prints normal errors as expected 1`] = `
+Error {
+	Error: hello there
+	trace@file:///C:/example.html:9:17
+	b@file:///C:/example.html:16:13
+	a@file:///C:/example.html:19:13
+	@file:///C:/example.html:21:9
+}
+`;
+
+exports[`Errors spidermonkey-style reformats stack with requested indentation 1`] = `
+Error {
+__Error: hello there
+__trace@file:///C:/example.html:9:17
+__b@file:///C:/example.html:16:13
+__a@file:///C:/example.html:19:13
+__@file:///C:/example.html:21:9
+}
+`;

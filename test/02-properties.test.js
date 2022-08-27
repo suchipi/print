@@ -1,4 +1,4 @@
-const print = require("../print");
+const { print } = require("./helpers");
 
 describe("Property fields", () => {
 	it("prints string-valued properties", () => {

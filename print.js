@@ -315,6 +315,32 @@ function print(value, ...args) {
 		);
 	}
 
+	// Error objects
+	else if (
+		typeof value === "object" &&
+		value != null &&
+		typeof value.name === "string" &&
+		typeof value.message === "string" &&
+		typeof value.constructor === "function" &&
+		/Error$/.test(value.constructor.name)
+	) {
+		const stackHeader = `${value.name}: ${value.message}\n`;
+
+		let stack = value.stack || "";
+
+		if (stack.startsWith(stackHeader)) {
+			stack = stack.slice(stackHeader.length);
+		}
+
+		linesBefore.push(
+			stackHeader +
+				stack
+					.split("\n")
+					.map((stackLine) => stackLine.replace(/^\s+/, indent))
+					.join("\n")
+		);
+	}
+
 	// Regular expressions
 	else if (value instanceof RegExp) {
 		linesBefore.push(regex + RegExp.prototype.toString.call(value) + off);

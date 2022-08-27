@@ -4,6 +4,18 @@ exports[`Property fields Accessors catches and prints any error that's thrown 1`
 {
 	abc: "ABC"
 	foo: Error {
+		Error: Don't touch me
+			at Object.get foo [as foo] (<rootDir>/test/02-properties.test.js:LINE:COL)
+			at print (<rootDir>/print.js:LINE:COL)
+			at realPrint (<rootDir>/test/helpers.js:LINE:COL)
+			at Object.print (<rootDir>/test/02-properties.test.js:LINE:COL)
+			at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+			at new Promise (<anonymous>)
+			at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+			at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+			at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
+			at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		
 		y: "tho"
 	}
 	xyz: "XYZ"
@@ -273,6 +285,18 @@ exports[`Property fields Prototypes recovers gracefully if \`__proto__\` access 
 	}
 	foo: {
 		__proto__: Error {
+			Error: Don't.
+				at Object.get (<rootDir>/test/02-properties.test.js:LINE:COL)
+				at __proto__ (<rootDir>/print.js:LINE:COL)
+				at print (<rootDir>/print.js:LINE:COL)
+				at realPrint (<rootDir>/test/helpers.js:LINE:COL)
+				at Object.print (<rootDir>/test/02-properties.test.js:LINE:COL)
+				at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+				at new Promise (<anonymous>)
+				at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+				at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+				at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
+			
 			no: "Really"
 		}
 		name: "Foo"
