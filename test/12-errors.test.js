@@ -59,6 +59,13 @@ describe("Errors", () => {
 				error.code = 45;
 				expect(print(error)).toMatchSnapshot();
 			});
+
+			it("prints message and stack if `opts.all` is enabled", () => {
+				const error = makeError();
+				error.path = "/some/where/idk";
+				error.code = 45;
+				expect(print(error, { all: true })).toMatchSnapshot();
+			});
 		});
 	});
 });

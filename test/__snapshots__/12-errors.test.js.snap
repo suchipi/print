@@ -19,6 +19,27 @@ Error {
 }
 `;
 
+exports[`Errors V8-style prints message and stack if \`opts.all\` is enabled 1`] = `
+Error {
+	Error: hello there
+		at V8-style (<rootDir>/test/12-errors.test.js:LINE:COL)
+		at Object.makeError (<rootDir>/test/12-errors.test.js:LINE:COL)
+		at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+		at new Promise (<anonymous>)
+		at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
+		at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
+		at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+	
+	stack: "Error: hello there\\n    at V8-style (<rootDir>/test/12-errors.test.js:LINE:COL)\\n    at Object.makeError (<rootDir>/test/12-errors.test.js:LINE:COL)\\n    at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)\\n    at new Promise (<anonymous>)\\n    at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)\\n    at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)\\n    at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)"
+	message: "hello there"
+	path: "/some/where/idk"
+	code: 45
+}
+`;
+
 exports[`Errors V8-style prints normal errors as expected 1`] = `
 Error {
 	Error: hello there
@@ -69,6 +90,26 @@ Error {
 }
 `;
 
+exports[`Errors quickjs-style prints message and stack if \`opts.all\` is enabled 1`] = `
+Error {
+	Error: hello there
+		at <eval> (<evalScript>)
+		at evalScript (native)
+		at eval_and_print
+		at handle_cmd
+		at readline_handle_cmd
+		at handle_key
+		at handle_char
+		at handle_byte
+		at term_read_handler
+	
+	stack: "    at <eval> (<evalScript>)\\n    at evalScript (native)\\n    at eval_and_print\\n    at handle_cmd\\n    at readline_handle_cmd\\n    at handle_key\\n    at handle_char\\n    at handle_byte\\n    at term_read_handler"
+	message: "hello there"
+	path: "/some/where/idk"
+	code: 45
+}
+`;
+
 exports[`Errors quickjs-style prints normal errors as expected 1`] = `
 Error {
 	Error: hello there
@@ -111,6 +152,20 @@ Error {
 }
 `;
 
+exports[`Errors spidermonkey eval-style prints message and stack if \`opts.all\` is enabled 1`] = `
+Error {
+	Error: hello there
+	@file:///C:/example.html line 7 > eval line 1 > eval:1:1
+	@file:///C:/example.html line 7 > eval:1:1
+	@file:///C:/example.html:7:6
+	
+	stack: "@file:///C:/example.html line 7 > eval line 1 > eval:1:1\\n@file:///C:/example.html line 7 > eval:1:1\\n@file:///C:/example.html:7:6"
+	message: "hello there"
+	path: "/some/where/idk"
+	code: 45
+}
+`;
+
 exports[`Errors spidermonkey eval-style prints normal errors as expected 1`] = `
 Error {
 	Error: hello there
@@ -137,6 +192,21 @@ Error {
 	a@file:///C:/example.html:19:13
 	@file:///C:/example.html:21:9
 	
+	path: "/some/where/idk"
+	code: 45
+}
+`;
+
+exports[`Errors spidermonkey-style prints message and stack if \`opts.all\` is enabled 1`] = `
+Error {
+	Error: hello there
+	trace@file:///C:/example.html:9:17
+	b@file:///C:/example.html:16:13
+	a@file:///C:/example.html:19:13
+	@file:///C:/example.html:21:9
+	
+	stack: "trace@file:///C:/example.html:9:17\\nb@file:///C:/example.html:16:13\\na@file:///C:/example.html:19:13\\n@file:///C:/example.html:21:9"
+	message: "hello there"
 	path: "/some/where/idk"
 	code: 45
 }

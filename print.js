@@ -256,7 +256,8 @@ function print(value, ...args) {
 		(typeof SharedArrayBuffer === "function" &&
 			value instanceof SharedArrayBuffer);
 	let isArrayLike = false;
-	let props = tooDeep || Object.getOwnPropertyNames(value);
+
+	let props = tooDeep ? null : Object.getOwnPropertyNames(value);
 
 	try {
 		isArrayLike = Symbol.iterator in value && Number(value.length) >= 0;
@@ -427,7 +428,7 @@ function print(value, ...args) {
 		const { length } = entries;
 
 		// Filter out indexed properties, provided they're genuine
-		if (!isArrayBuffer) {
+		if (!isArrayBuffer && Array.isArray(props)) {
 			props = props.filter((x) => +x !== ~~x || +x < 0 || x > length - 1);
 		}
 
