@@ -77,7 +77,8 @@ describe("Functions", () => {
 
 	describe("Accessors", () => {
 		it("prints getter/setter pairs", () => {
-			let calls = 0;
+			let getCalls = 0;
+			let setCalls = 0;
 			expect(
 				print({
 					abc: "ABC",
@@ -85,28 +86,31 @@ describe("Functions", () => {
 						return "Foo";
 					},
 					set foo(to) {
-						calls += 1 ** +!!to;
+						setCalls++;
 					},
 					xyz: "XYZ",
 				})
 			).toMatchSnapshot();
-			expect(calls).toEqual(0);
+			expect(setCalls).toEqual(0);
 
-			calls = 0;
+			const something = Symbol("something");
+			getCalls = 0;
+			setCalls = 0;
 			expect(
 				print({
 					abc: "ABC",
-					get [Symbol.toStringTag]() {
-						++calls;
-						return "Bar";
+					get [something]() {
+						getCalls++;
+						return true;
 					},
-					set [Symbol.toStringTag](to) {
-						calls += 1 ** +!!to;
+					set [something](to) {
+						setCalls++;
 					},
 					xyz: "XYZ",
 				})
 			).toMatchSnapshot();
-			expect(calls).toEqual(0);
+			expect(getCalls).toEqual(0);
+			expect(setCalls).toEqual(0);
 		});
 
 		it("doesn't print them when invoking getters", () => {
@@ -120,7 +124,7 @@ describe("Functions", () => {
 							return ++getterCalls;
 						},
 						set foo(to) {
-							setterCalls += 1 ** +!!to;
+							setterCalls++;
 						},
 						xyz: "XYZ",
 					},

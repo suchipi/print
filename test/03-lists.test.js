@@ -310,27 +310,6 @@ describe("Lists", () => {
 			expect(print(args)).toMatchSnapshot();
 		});
 
-		it("only identifies lists with an obvious [[ParameterMap]]", () => {
-			function call() {
-				throw new TypeError(0xbaaaaaaaad);
-			}
-			const args = Object.defineProperties(
-				{ 0: "A", 1: "B", 2: "C" },
-				{
-					callee: { get: call, set: call },
-					length: { configurable: true, writable: true, value: 3 },
-					[Symbol.iterator]: {
-						configurable: true,
-						writable: true,
-						value: Symbol.iterator,
-					},
-				}
-			);
-			expect(print(args)).toMatchSnapshot();
-			Object.defineProperty(args, Symbol.toStringTag, { value: "Arguments" });
-			expect(print(args)).toMatchSnapshot();
-		});
-
 		it("prints empty argument lists on one line", () => {
 			const args = (function () {
 				return arguments;

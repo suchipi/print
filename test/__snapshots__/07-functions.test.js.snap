@@ -59,7 +59,7 @@ exports[`Functions Accessors prints getter/setter pairs 1`] = `
 	}
 	set foo: Function {
 		│1│ set foo(to) {
-		│2│           calls += 1 ** +!!to;
+		│2│           setCalls++;
 		│3│         }
 	}
 	xyz: "XYZ"
@@ -70,15 +70,15 @@ exports[`Functions Accessors prints getter/setter pairs 2`] = `
 {
 	abc: "ABC"
 	xyz: "XYZ"
-	get @@toStringTag: Function {
-		│1│ get [Symbol.toStringTag]() {
-		│2│           ++calls;
-		│3│           return "Bar";
+	get Symbol(something): Function {
+		│1│ get [something]() {
+		│2│           getCalls++;
+		│3│           return true;
 		│4│         }
 	}
-	set @@toStringTag: Function {
-		│1│ set [Symbol.toStringTag](to) {
-		│2│           calls += 1 ** +!!to;
+	set Symbol(something): Function {
+		│1│ set [something](to) {
+		│2│           setCalls++;
 		│3│         }
 	}
 }
@@ -218,7 +218,7 @@ exports[`Functions doesn't print source code if \`noSource\` is set 6`] = `
 GeneratorFunction {
 	length: 0
 	name: "bar"
-	prototype: {}
+	prototype: Generator {}
 }
 `;
 
@@ -233,7 +233,7 @@ exports[`Functions doesn't print source code if \`noSource\` is set 8`] = `
 AsyncGeneratorFunction {
 	length: 0
 	name: "qux"
-	prototype: {}
+	prototype: AsyncGenerator {}
 }
 `;
 

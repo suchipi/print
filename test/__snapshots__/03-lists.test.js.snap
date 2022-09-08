@@ -10,22 +10,6 @@ Arguments [
 ]
 `;
 
-exports[`Lists Argument lists only identifies lists with an obvious [[ParameterMap]] 1`] = `
-[
-	"A"
-	"B"
-	"C"
-]
-`;
-
-exports[`Lists Argument lists only identifies lists with an obvious [[ParameterMap]] 2`] = `
-[
-	"A"
-	"B"
-	"C"
-]
-`;
-
 exports[`Lists Argument lists prints assigned properties 1`] = `
 Arguments [
 	1

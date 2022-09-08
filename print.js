@@ -294,6 +294,10 @@ function print(value, ...args) {
 		}
 	}
 
+	if (type === "" && typeof value[Symbol.toStringTag] === "string") {
+		type = value[Symbol.toStringTag];
+	}
+
 	if (!tooDeep) {
 		if (Object.isFrozen(value)) {
 			linesBefore.push(frozen + "Frozen" + off);

@@ -639,13 +639,13 @@ exports[`Property fields prints symbol-valued properties 1`] = `
 `;
 
 exports[`Property fields prints symbol-valued properties 2`] = `
-{
+foo {
 	@@toStringTag: "foo"
 }
 `;
 
 exports[`Property fields prints symbol-valued properties 3`] = `
-{
+foo {
 	Symbol(Symbol.toStringTag): "foo"
 }
 `;
