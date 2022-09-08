@@ -327,7 +327,8 @@ function print(value, ...args) {
 		typeof value.name === "string" &&
 		typeof value.message === "string" &&
 		typeof value.constructor === "function" &&
-		/Error$/.test(value.constructor.name)
+		typeof value.constructor.name === "string" &&
+		value.constructor.name.endsWith("Error")
 	) {
 		const stackHeader = `${value.name}: ${value.message}\n`;
 
