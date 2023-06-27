@@ -9,8 +9,8 @@ Error {
 		at new Promise (<anonymous>)
 		at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
 		at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
-		at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
 		at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 	
@@ -28,12 +28,12 @@ Error {
 		at new Promise (<anonymous>)
 		at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
 		at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
-		at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
 		at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 	
-	stack: "Error: hello there\\n    at V8-style (<rootDir>/test/12-errors.test.js:LINE:COL)\\n    at Object.makeError (<rootDir>/test/12-errors.test.js:LINE:COL)\\n    at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)\\n    at new Promise (<anonymous>)\\n    at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)\\n    at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)\\n    at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)"
+	stack: "Error: hello there\\n    at V8-style (<rootDir>/test/12-errors.test.js:LINE:COL)\\n    at Object.makeError (<rootDir>/test/12-errors.test.js:LINE:COL)\\n    at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)\\n    at new Promise (<anonymous>)\\n    at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)\\n    at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)\\n    at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)"
 	message: "hello there"
 	path: "/some/where/idk"
 	code: 45
@@ -49,8 +49,8 @@ Error {
 		at new Promise (<anonymous>)
 		at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
 		at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
-		at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
 		at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 		at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 }
@@ -65,8 +65,8 @@ ____at Promise.then.completed (<rootDir>/node_modules/jest-circus/build/utils.js
 ____at new Promise (<anonymous>)
 ____at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
 ____at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
-____at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
 ____at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+____at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 ____at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 ____at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 }

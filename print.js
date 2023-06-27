@@ -298,6 +298,8 @@ function print(value, ...args) {
 		type = value[Symbol.toStringTag];
 	}
 
+	let typeSuffix = "";
+
 	if (!tooDeep) {
 		if (Object.isFrozen(value)) {
 			linesBefore.push(frozen + "Frozen" + off);
@@ -480,6 +482,23 @@ function print(value, ...args) {
 		}
 	}
 
+	// Display function names
+	if (
+		typeof value === "function" &&
+		typeof value.name === "string" &&
+		value.name != ""
+	) {
+		const printedName = print(
+			value.name,
+			null,
+			opts,
+			refs,
+			path + dot + keys + "name",
+			depth
+		);
+		typeSuffix += " " + printedName;
+	}
+
 	// Display the source code of function objects
 	if (typeof value === "function" && !opts.noSource && !tooDeep) {
 		const source = [...Function.prototype.toString.call(value)];
@@ -622,7 +641,9 @@ function print(value, ...args) {
 	}
 
 	return (
-		key + (type ? typeColour + type + off + " " : "") + valueParts.join("")
+		key +
+		(type ? typeColour + type + off + typeSuffix + " " : "") +
+		valueParts.join("")
 	);
 }
 
