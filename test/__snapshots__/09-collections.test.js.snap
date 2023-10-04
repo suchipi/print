@@ -18,8 +18,8 @@ BadMap {
 			at new Promise (<anonymous>)
 			at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
 			at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+			at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
 			at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
-			at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 		
 		strikes: 3
 	}
@@ -283,8 +283,8 @@ BadSet {
 			at new Promise (<anonymous>)
 			at callAsyncCircusFn (<rootDir>/node_modules/jest-circus/build/utils.js:LINE:COL)
 			at _callCircusTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
+			at processTicksAndRejections (node:internal/process/task_queues:LINE:COL)
 			at _runTest (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
-			at _runTestsForDescribeBlock (<rootDir>/node_modules/jest-circus/build/run.js:LINE:COL)
 		
 		strikes: 3
 	}
