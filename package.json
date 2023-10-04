@@ -1,6 +1,6 @@
 {
 	"name": "@suchipi/print",
-	"version": "v2.5.0",
+	"version": "2.5.0",
 	"description": "Generate a human-readable representation of a value.",
 	"author": "John Gardner <gardnerjohng@gmail.com>",
 	"keywords": [
@@ -11,7 +11,10 @@
 		"format",
 		"string"
 	],
-	"repository": "https://github.com/suchipi/print",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/suchipi/print.git"
+	},
 	"license": "ISC",
 	"main": "print.js",
 	"types": "print.d.ts",
