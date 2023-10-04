@@ -8,4 +8,6 @@ const printSanitized = (...args) => {
 		.replace(/:\d+:\d+\)/g, ":LINE:COL)");
 };
 
+printSanitized.custom = realPrint.custom;
+
 module.exports = { print: printSanitized };

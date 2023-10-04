@@ -600,18 +600,91 @@ function print(value, ...args) {
 		}
 	}
 
-	// Pick an appropriate pair of brackets
-	let valueParts = isArrayLike
-		? [punct + "[" + off, "\n", punct + "]" + off]
-		: [punct + "{" + off, "\n", punct + "}" + off];
-
 	// If there's nothing of interest in a RegExp or Date object, use a 1-line form
-	const numProps = propLines.length;
-	if (
-		!numProps &&
+	let oneLine =
+		!propLines.length &&
 		(type === "RegExp" || type === "Date") &&
-		linesBefore.length === 1
-	) {
+		linesBefore.length === 1;
+
+	// Pick an appropriate pair of brackets
+	const brackets = isArrayLike ? ["[", "]"] : ["{", "}"];
+
+	const inputs = {
+		key,
+		type,
+		brackets,
+		oneLine,
+		linesBefore,
+		linesAfter,
+		propLines,
+		get tooDeep() {
+			return tooDeep;
+		},
+		indent,
+		typeSuffix,
+		opts,
+		colours: {
+			off,
+			red,
+			grey,
+			green,
+			darkGreen,
+			punct,
+			keys,
+			keyEscape,
+			typeColour,
+			primitive,
+			escape,
+			date,
+			hexBorder,
+			hexValue,
+			hexOffset,
+			reference,
+			srcBorder,
+			srcRowNum,
+			srcRowText,
+			nul,
+			nulProt,
+			undef,
+			noExts,
+			frozen,
+			sealed,
+			regex,
+			string,
+			symbol,
+			symbolFade,
+			braces,
+			quotes,
+			empty,
+			dot,
+		},
+	};
+
+	if (typeof value[print.custom] === "function") {
+		// custom function can mutate inputs object to change output
+		value[print.custom](inputs);
+	}
+
+	return printFormattedParts(inputs);
+}
+
+function printFormattedParts({
+	key,
+	type,
+	oneLine,
+	linesBefore,
+	linesAfter,
+	propLines,
+	tooDeep,
+	indent,
+	typeSuffix,
+	colours: { punct, off, typeColour },
+	brackets,
+}) {
+	let valueParts = [punct + brackets[0] + off, "\n", punct + brackets[1] + off];
+
+	const numProps = propLines.length;
+	if (oneLine) {
 		valueParts = linesBefore;
 		type = "";
 	}
@@ -646,5 +719,7 @@ function print(value, ...args) {
 		valueParts.join("")
 	);
 }
+
+print.custom = Symbol("print.custom");
 
 module.exports = print;

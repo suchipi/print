@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`print.custom can be used to modify print output 1`] = `
+{
+	something: My custom thing!!! {
+		is: "my custom thing"
+		Symbol(print.custom): Function "[print.custom]" {
+			│1│ inputs => {
+			│2│           inputs.type = "My custom thing!!!";
+			│3│           inputs.linesAfter.push("yeah :)");
+			│4│         }
+		}
+		
+		yeah :)
+	}
+}
+`;
+
+exports[`print.custom receives a lot of stuff 1`] = `
+Object {
+  brackets: Array [
+    {,
+    },
+  ],
+  colours: Object {
+    braces: ,
+    darkGreen: ,
+    date: ,
+    dot: .,
+    empty: empty × ,
+    escape: ,
+    frozen: ,
+    green: ,
+    grey: ,
+    hexBorder: ,
+    hexOffset: ,
+    hexValue: ,
+    keyEscape: ,
+    keys: ,
+    noExts: ,
+    nul: ,
+    nulProt: ,
+    off: ,
+    primitive: ,
+    punct: ,
+    quotes: ,
+    red: ,
+    reference: ,
+    regex: ,
+    sealed: ,
+    srcBorder: ,
+    srcRowNum: ,
+    srcRowText: ,
+    string: ,
+    symbol: ,
+    symbolFade: ,
+    typeColour: ,
+    undef: ,
+  },
+  indent: 	,
+  key: something: ,
+  linesAfter: Array [],
+  linesBefore: Array [],
+  oneLine: false,
+  opts: Object {
+    someOpt: true,
+  },
+  propLines: Array [
+    is: "my custom thing",
+    Symbol(print.custom): Function "[print.custom]" {
+	│1│ inputs_ => {
+	│2│           inputs = inputs_;
+	│3│         }
+},
+  ],
+  tooDeep: false,
+  type: ,
+  typeSuffix: ,
+}
+`;

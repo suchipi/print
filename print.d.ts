@@ -91,6 +91,11 @@ export interface PrintFunction {
 	 * @returns A string representation of `value`.
 	 */
 	(value: any, key?: string | symbol, options?: PrintOptions): string;
+
+	/**
+	 * A symbol which can be used to customize how an object gets printed.
+	 */
+	custom: symbol;
 }
 
 /**
@@ -102,5 +107,20 @@ export interface PrintFunction {
  * @returns A string representation of `value`.
  */
 declare var print: PrintFunction;
+
+export interface PrintCustomInputs {
+	key: string | symbol;
+	type: string;
+	brackets: [string, string];
+	oneLine: boolean;
+	linesBefore: Array<string>;
+	linesAfter: Array<string>;
+	propLines: Array<string>;
+	readonly tooDeep: boolean;
+	indent: string;
+	typeSuffix: string;
+	opts: PrintOptions;
+	colours: { [Key in keyof Required<Colours>]: string };
+}
 
 export = print;
